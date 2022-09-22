@@ -55,7 +55,7 @@ public class keyMeUp
         //graph.displayAsList();
         graph.displayAsList();
         System.out.println();
-        int x = graph.breadthFirstSearchFind("3", "1");
+        int x = graph.breadthFirstSearchFind("/", "1");
         System.out.println();
         System.out.println(x + " steps");
 

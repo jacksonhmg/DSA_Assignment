@@ -242,8 +242,7 @@ public class DSAGraph{
         DSAGraphVertex v = getVertex(source);
         v.setVisited();
         Q.enqueue(v);
-        T.enqueue(v);
-        System.out.print(v.getLabel());
+
         while(!(Q.isEmpty()))
         {
             v = (DSAGraphVertex)Q.dequeue();
@@ -253,16 +252,18 @@ public class DSAGraph{
             {
                 DSAGraphVertex w = (DSAGraphVertex)ill.next();
                 count++;
-                System.out.print(" -> " + w.getLabel());
-                if(w.getLabel().equals(dest))
-                {
-                    return count;
-                }
+                
                 if(!(w.getVisited()))
                 {
+                    T.enqueue(v);
                     T.enqueue(w);
                     w.setVisited();
                     Q.enqueue(w);
+                }
+                //System.out.print(" -> " + w.getLabel());
+                if(w.getLabel().equals(dest))
+                {
+                    return shortestPathBreadth(T, getVertex(dest), getVertex(source));
                 }
             }
         }
@@ -274,28 +275,34 @@ public class DSAGraph{
     public int shortestPathBreadth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source)
     {
         DSALinkedList list = new DSALinkedList();
+        int count1 = 0;
+        int count = 0;
+        
         DSAGraphVertex w = new DSAGraphVertex(null, null);
         list.insertLast(dest);
         DSAGraphVertex v = dest;
         do{
+            boolean stop = false;
             Iterator ill = queue.iterator();
-            while(ill.hasNext())
+            while(ill.hasNext() && !stop)
             {
                 w = (DSAGraphVertex)ill.next();
                 if(isAdjacent(v.getLabel(), w.getLabel()))
                 {
                     list.insertFirst(w);
+                    stop = true;
                 }
             }
             v = w;
-        } while(!(w.getLabel().equals(source.getLabel())));
+        } while(!((v.getLabel()).equals(source.getLabel())));
         Iterator ill2 = list.iterator();
         while(ill2.hasNext())
         {
             DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
             System.out.print(printV.getLabel() + " ");
+            count ++;
         }
-        return list.length();
+        return count-1;
     }
 
     public void depthFirstSearch()
