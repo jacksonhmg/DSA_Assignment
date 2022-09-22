@@ -64,14 +64,13 @@ public class keyMeUp
         }
 
         //graph.displayAsList();
-        graph.displayAsList();
+        //graph.displayAsList();
         System.out.println();
-        int x = graph.breadthFirstSearchFind("@", "h");
-        System.out.println();
+        int x = graph.breadthStringPath(args[2]);
         System.out.println(x + " steps");
 
-        x = graph.depthFirstSearchFind("@", "h");
         System.out.println();
+        x = graph.depthStringPath(args[2],"depth.txt");
         System.out.println(x + " steps");
         // graph.displayAsMatrix();
 
@@ -83,5 +82,7 @@ public class keyMeUp
         splitLine = csvRow.split(" "); 
         return splitLine;
     }
+
+    
 
 }

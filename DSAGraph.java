@@ -116,10 +116,19 @@ public class DSAGraph{
         while(ill.hasNext())
         {
             DSAGraphEdge edge = (DSAGraphEdge)ill.next();
-
-            if((edge.getFrom().getLabel().equals(label1) && edge.getTo().getLabel().equals(label2)) || (edge.getFrom().getLabel().equals(label2) && edge.getTo().getLabel().equals(label1)))
+            if(!(edge.isDirected()))
             {
-                checker = true;
+                if((edge.getFrom().getLabel().equals(label1) && edge.getTo().getLabel().equals(label2)) || (edge.getFrom().getLabel().equals(label2) && edge.getTo().getLabel().equals(label1)))
+                {
+                    checker = true;
+                }
+            }
+            if(edge.isDirected())
+            {
+                if((edge.getFrom().getLabel().equals(label1) && edge.getTo().getLabel().equals(label2)))
+                {
+                    checker = true;
+                }
             }
         }
         return checker;
@@ -285,7 +294,7 @@ public class DSAGraph{
             while(ill.hasNext() && !stop)
             {
                 w = (DSAGraphVertex)ill.next();
-                if(isAdjacent(v.getLabel(), w.getLabel()))
+                if(isAdjacent(w.getLabel(), v.getLabel()))
                 {
                     list.insertFirst(w);
                     stop = true;
@@ -293,15 +302,20 @@ public class DSAGraph{
             }
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
-        Iterator ill2 = list.iterator();
-        while(ill2.hasNext())
-        {
-            DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
-            System.out.print(printV.getLabel() + " ");
-            count ++;
-        }
-        return count-1;
+        return printList(list);
     }
+
+
+    public int breadthStringPath(String string)
+    {
+        int count = 0;
+        for(int i = 0; i < string.length()-1; i++)
+        {
+            count += breadthFirstSearchFind(String.valueOf(string.charAt(i)), String.valueOf(string.charAt(i+1)));
+        }
+        return count;
+    }
+
 
     public void depthFirstSearch()
     {
@@ -337,7 +351,7 @@ public class DSAGraph{
     }
 
 
-    public int depthFirstSearchFind(Object source, Object dest)
+    public int depthFirstSearchFind(Object source, Object dest, String pFileName)
     {
         int count = 0;
         DSAQueue T = new DSAQueue();
@@ -351,6 +365,7 @@ public class DSAGraph{
         DSAGraphVertex v = getVertex(source);
         v.setVisited();
         S.push(v);
+        T.enqueue(v);
         while(!(S.isEmpty()))
         {
             Iterator ill = (v.getAdjacent()).iterator();
@@ -360,16 +375,15 @@ public class DSAGraph{
                 
                 if(!(w.getVisited()))
                 {
-                    
                     T.enqueue(v);
                     T.enqueue(w);
                     w.setVisited();
                     S.push(w);
-                    v = w;
+                    //v = w;
                 }
                 if(w.getLabel().equals(dest))
                 {
-                    return shortestPathDepth(T, getVertex(dest), getVertex(source));
+                    return shortestPathDepth(T, getVertex(dest), getVertex(source), pFileName);
                 }
             }
             v = (DSAGraphVertex)S.pop();
@@ -379,7 +393,7 @@ public class DSAGraph{
     }
 
 
-    public int shortestPathDepth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source)
+    public int shortestPathDepth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, String pFileName)
     {
         DSALinkedList list = new DSALinkedList();
         int count = 0;
@@ -393,7 +407,7 @@ public class DSAGraph{
             while(ill.hasNext() && !stop)
             {
                 w = (DSAGraphVertex)ill.next();
-                if(isAdjacent(v.getLabel(), w.getLabel()))
+                if(isAdjacent(w.getLabel(), v.getLabel()))
                 {
                     list.insertFirst(w);
                     stop = true;
@@ -401,6 +415,23 @@ public class DSAGraph{
             }
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
+        saveList(pFileName, list);
+        return printList(list);
+        /*Iterator ill2 = list.iterator();
+        while(ill2.hasNext())
+        {
+            DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
+            System.out.print(printV.getLabel() + " ");
+            count ++;
+        }
+        System.out.println();
+        return count-1;*/
+    }
+
+
+    public int printList(DSALinkedList list)
+    {
+        int count = 0;
         Iterator ill2 = list.iterator();
         while(ill2.hasNext())
         {
@@ -408,7 +439,93 @@ public class DSAGraph{
             System.out.print(printV.getLabel() + " ");
             count ++;
         }
+        System.out.println();
         return count-1;
     }
+
+    public void saveList(String pFileName, DSALinkedList list)
+    {
+        //FileOutputStream fileStrm = null;
+        PrintWriter pw;
+        try {
+            //fileStrm = new FileOutputStream(pFileName);
+            pw = new PrintWriter(new FileWriter(pFileName,true));
+            Iterator ill2 = list.iterator();
+            while(ill2.hasNext())
+            {
+                DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
+                pw.print(printV.getLabel() + " ");
+            }
+            pw.println();
+            pw.close();
+        } catch (IOException e) {
+            System.out.println("Error in writing to file" + e.getMessage());
+        }
+
+    }
+
+
+    public int depthStringPath(String string, String pFileName)
+    {
+        File f= new File(pFileName);           //file to be delete  
+        f.delete();  
+        int count = 0;
+        for(int i = 0; i < string.length()-1; i++)
+        {
+            count += depthFirstSearchFind(String.valueOf(string.charAt(i)), String.valueOf(string.charAt(i+1)), pFileName);
+        }
+        return count;
+    }
+
+
+    public static void writeOneRow(String pFileName, String pInputString){
+        FileOutputStream fileStrm = null;
+        PrintWriter pw;
+        try {
+            fileStrm = new FileOutputStream(pFileName);
+            pw = new PrintWriter(fileStrm);
+            pw.println(pInputString);
+            pw.close();
+        } catch (IOException e) {
+            System.out.println("Error in writing to file" + e.getMessage());
+        }
+    }
+
+    /*public int myDepthFunc(String source, String dest)
+    {
+        DSAQueue queue = new DSAQueue();
+        int count = 0;
+        Iterator clearIll = vertices.iterator();
+        while(clearIll.hasNext())
+        {
+            DSAGraphVertex clearV = (DSAGraphVertex)clearIll.next();
+            clearV.clearVisited();
+        }
+        myDepthFunc2(source, dest,queue, count);
+    }
+
+    public int myDepthFunc2(String source, String dest, DSAQueue queue, int count)
+    {
+        DSAGraphVertex v = getVertex(source);
+        v.setVisited();
+        queue.enqueue(v);
+        Iterator ill = (v.getAdjacent()).iterator();
+        while(ill.hasNext())
+        {
+            DSAGraphVertex w = (DSAGraphVertex)ill.next();
+            if(!(w.getVisited()))
+            {
+                count++;
+                //queue.enqueue(w);
+                if(w != getVertex(dest))
+                {
+                    myDepthFunc2((String)w.getLabel(), dest, queue, count);
+                }
+            }
+        }
+    }*/
+
+
+
 
 }
