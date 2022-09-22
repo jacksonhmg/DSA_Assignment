@@ -1,5 +1,7 @@
 import java.util.*;
 import java.io.*;
+import java.lang.*;
+
 public class keyMeUp
 {
     public static void main(String[] args)
@@ -38,10 +40,19 @@ public class keyMeUp
                     String[] sArray = processLine(data);
                     for(int i = 0; i < sArray.length; i++)
                     {
+                        boolean directed = false;
+                        if(sArray[i].length() > 2)
+                        {
+                            if(sArray[i].charAt(0) == '-' && sArray[i].charAt(1) == 'd')
+                            {
+                                directed = true;
+                                sArray[i] = sArray[i].substring(2,sArray[i].length());
+                            }
+                        }
                         graph.addVertex(sArray[i], sArray[i]);
                         if(i != 0)
                         {
-                            graph.addEdge(sArray[0], sArray[i], false);
+                            graph.addEdge(sArray[0], sArray[i], directed);
                         }
                     }
                 }
@@ -55,11 +66,11 @@ public class keyMeUp
         //graph.displayAsList();
         graph.displayAsList();
         System.out.println();
-        int x = graph.breadthFirstSearchFind("/", "1");
+        int x = graph.breadthFirstSearchFind("@", "h");
         System.out.println();
         System.out.println(x + " steps");
 
-        x = graph.depthFirstSearchFind("3", "1");
+        x = graph.depthFirstSearchFind("@", "h");
         System.out.println();
         System.out.println(x + " steps");
         // graph.displayAsMatrix();

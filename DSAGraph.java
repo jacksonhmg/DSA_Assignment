@@ -22,7 +22,10 @@ public class DSAGraph{
             DSAGraphVertex vert1 = getVertex(label1);
             DSAGraphVertex vert2 = getVertex(label2);
             vert1.addEdge(vert2);
-            vert2.addEdge(vert1);
+            if(!directed)
+            {
+                vert2.addEdge(vert1);
+            }
             edges.insertLast(edge);
         }
     }
@@ -230,7 +233,7 @@ public class DSAGraph{
 
     public int breadthFirstSearchFind(Object source, Object dest)
     {
-        int count = 0;
+
         DSAQueue T = new DSAQueue();
         DSAQueue Q = new DSAQueue();
         Iterator clearILL = vertices.iterator();
@@ -246,13 +249,10 @@ public class DSAGraph{
         while(!(Q.isEmpty()))
         {
             v = (DSAGraphVertex)Q.dequeue();
-            
             Iterator ill = (v.getAdjacent()).iterator();
             while(ill.hasNext())
             {
                 DSAGraphVertex w = (DSAGraphVertex)ill.next();
-                count++;
-                
                 if(!(w.getVisited()))
                 {
                     T.enqueue(v);
@@ -260,14 +260,13 @@ public class DSAGraph{
                     w.setVisited();
                     Q.enqueue(w);
                 }
-                //System.out.print(" -> " + w.getLabel());
                 if(w.getLabel().equals(dest))
                 {
                     return shortestPathBreadth(T, getVertex(dest), getVertex(source));
                 }
             }
         }
-        return count;
+        return 0;
     }
 
 
@@ -275,7 +274,6 @@ public class DSAGraph{
     public int shortestPathBreadth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source)
     {
         DSALinkedList list = new DSALinkedList();
-        int count1 = 0;
         int count = 0;
         
         DSAGraphVertex w = new DSAGraphVertex(null, null);
@@ -362,23 +360,55 @@ public class DSAGraph{
                 
                 if(!(w.getVisited()))
                 {
-                    System.out.print(w.getLabel() + " ");
-                    if(w.getLabel().equals(dest))
-                    {
-                        return count;
-                    }
+                    
                     T.enqueue(v);
                     T.enqueue(w);
                     w.setVisited();
                     S.push(w);
-                    count++;
                     v = w;
+                }
+                if(w.getLabel().equals(dest))
+                {
+                    return shortestPathDepth(T, getVertex(dest), getVertex(source));
                 }
             }
             v = (DSAGraphVertex)S.pop();
             
         }
-        return count;
+        return 0;
+    }
+
+
+    public int shortestPathDepth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source)
+    {
+        DSALinkedList list = new DSALinkedList();
+        int count = 0;
+        
+        DSAGraphVertex w = new DSAGraphVertex(null, null);
+        list.insertLast(dest);
+        DSAGraphVertex v = dest;
+        do{
+            boolean stop = false;
+            Iterator ill = queue.iterator();
+            while(ill.hasNext() && !stop)
+            {
+                w = (DSAGraphVertex)ill.next();
+                if(isAdjacent(v.getLabel(), w.getLabel()))
+                {
+                    list.insertFirst(w);
+                    stop = true;
+                }
+            }
+            v = w;
+        } while(!((v.getLabel()).equals(source.getLabel())));
+        Iterator ill2 = list.iterator();
+        while(ill2.hasNext())
+        {
+            DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
+            System.out.print(printV.getLabel() + " ");
+            count ++;
+        }
+        return count-1;
     }
 
 }

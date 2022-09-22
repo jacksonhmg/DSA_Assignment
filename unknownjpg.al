@@ -1,4 +1,4 @@
-1 2 q
+1 2 q BACK
 2 1 3 w
 3 2 4 e
 4 3 5 r
@@ -7,7 +7,7 @@
 7 6 8 u
 8 7 9 i
 9 8 0 o
-0 9 p
+0 9 p BACK
 q 1 w a
 w q e s 2
 e w r d 3
@@ -18,7 +18,7 @@ u y i j 7
 i u o k 8
 o i p l 9
 p o - / 0
-- p www.
+- p www. BACK
 a CAPS s q
 s a d z w
 d s f x e
@@ -31,14 +31,19 @@ l k / , o
 / l www. . p
 www. / - .com
 CAPS z a
-z CAPS x s
-x z c d
-c x v f SPACE 
-v c b g SPACE
+z CAPS x s 123
+x z c d 123
+c x v f -dSPACE 
+v c b g -dSPACE
 b v n h SPACE
-n b m j SPACE
-m n , k SPACE
-, m . l
-. , .com /
-.com . www.
-SPACE c v b n m
+n b m j -dSPACE
+m n , k -dSPACE
+, m . l @
+. , .com / OK
+.com . www. OK
+SPACE b @ 123
+BACK 0 - 1
+GLOBE CAPS 123 OK
+123 GLOBE z x SPACE
+@ SPACE , OK
+OK @ . .com
