@@ -283,8 +283,7 @@ public class DSAGraph{
     public int shortestPathBreadth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, String pFileName)
     {
         DSALinkedList list = new DSALinkedList();
-        int count = 0;
-        
+
         DSAGraphVertex w = new DSAGraphVertex(null, null);
         list.insertLast(dest);
         DSAGraphVertex v = dest;
@@ -303,16 +302,26 @@ public class DSAGraph{
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
         saveList(pFileName, list);
-        return printList(list);
+        return list.length() - 1;
     }
 
 
     public int breadthStringPath(String string, String pFileName)
     { 
         int count = 0;
-        for(int i = 0; i < string.length()-1; i++)
+        String[] strArr = null;
+        strArr = string.split("");
+        for(int i = 0; i < strArr.length-1; i++)
         {
-            count += breadthFirstSearchFind(String.valueOf(string.charAt(i)), String.valueOf(string.charAt(i+1)), pFileName);
+            if(strArr[i].equals(" "))
+            {
+                strArr[i] = "SPACE";
+            }
+            if(strArr[i+1].equals(" "))
+            {
+                strArr[i+1] = "SPACE";
+            }
+            count += breadthFirstSearchFind(strArr[i], strArr[i+1], pFileName);
         }
         return count;
     }
@@ -380,7 +389,6 @@ public class DSAGraph{
                     T.enqueue(w);
                     w.setVisited();
                     S.push(w);
-                    //v = w;
                 }
                 if(w.getLabel().equals(dest))
                 {
@@ -397,8 +405,7 @@ public class DSAGraph{
     public int shortestPathDepth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, String pFileName)
     {
         DSALinkedList list = new DSALinkedList();
-        int count = 0;
-        
+
         DSAGraphVertex w = new DSAGraphVertex(null, null);
         list.insertLast(dest);
         DSAGraphVertex v = dest;
@@ -417,16 +424,7 @@ public class DSAGraph{
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
         saveList(pFileName, list);
-        return printList(list);
-        /*Iterator ill2 = list.iterator();
-        while(ill2.hasNext())
-        {
-            DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
-            System.out.print(printV.getLabel() + " ");
-            count ++;
-        }
-        System.out.println();
-        return count-1;*/
+        return list.length() -1;
     }
 
 
@@ -444,13 +442,12 @@ public class DSAGraph{
         return count-1;
     }
 
+
     public int saveList(String pFileName, DSALinkedList list)
     {
-        //FileOutputStream fileStrm = null;
         PrintWriter pw;
         int count = 0;
         try {
-            //fileStrm = new FileOutputStream(pFileName);
             pw = new PrintWriter(new FileWriter(pFileName,true));
             Iterator ill2 = list.iterator();
             while(ill2.hasNext())
@@ -479,19 +476,28 @@ public class DSAGraph{
     public int depthStringPath(String string, String pFileName)
     {
         int count = 0;
-        for(int i = 0; i < string.length()-1; i++)
+        String[] strArr = null;
+        strArr = string.split("");
+        for(int i = 0; i < strArr.length-1; i++)
         {
-            count += depthFirstSearchFind(String.valueOf(string.charAt(i)), String.valueOf(string.charAt(i+1)), pFileName);
+            if(strArr[i].equals(" "))
+            {
+                strArr[i] = "SPACE";
+            }
+            if(strArr[i+1].equals(" "))
+            {
+                strArr[i+1] = "SPACE";
+            }
+            //System.out.println(strArr[i]+"\n");
+            count += depthFirstSearchFind(strArr[i], strArr[i+1], pFileName);
         }
         return count;
     }
 
 
     public static void writeOneRow(String pFileName, String pInputString){
-        //FileOutputStream fileStrm = null;
         PrintWriter pw;
         try {
-            //fileStrm = new FileOutputStream(pFileName);
             pw = new PrintWriter(new FileWriter(pFileName,true));
             pw.println(pInputString);
             pw.close();

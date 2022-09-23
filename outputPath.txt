@@ -1,26 +1,22 @@
-Breadth wins for bigtest123! 
+Breadth wins for sEan aye! 
 
 Breadth path:
-b  -> h -> y -> u -> i
-i  -> u -> y -> t -> g
-g  -> t
-t  -> r -> e
-e  -> w -> s
-s  -> w -> e -> r -> t
-t  -> 5 -> 4 -> 3 -> 2 -> 1
-1  -> 2
-2  -> 3
-24 steps
+s  -> w -> 2 -> 3 -> E
+E  -> 3 -> 2 -> 1 -> q -> a
+a  -> CAPS -> z -> 123 -> SPACE -> b -> n
+n  -> SPACE
+SPACE  -> 123 -> z -> s -> a
+a  -> q -> w -> e -> r -> t -> y
+y  -> t -> r -> e
+29 steps
 
 Depth path:
-b  -> SPACE -> @ -> OK -> .com -> www. -> - -> p -> o -> i
-i  -> k -> m -> SPACE -> 123 -> x -> d -> f -> g
-g  -> t
-t  -> r -> e
-e  -> w -> s
-s  -> a -> CAPS -> GLOBE -> OK -> . -> , -> l -> k -> j -> h -> g -> t
-t  -> g -> v -> SPACE -> @ -> OK -> .com -> www. -> - -> BACK -> 1
-1  -> 2
-2  -> 3
-46 steps
+s  -> z -> 123 -> X -> D -> E
+E  -> W -> S -> Z -> CAPS -> a
+a  -> CAPS -> z -> 123 -> SPACE -> B -> N -> M -> , -> m -> n
+n  -> SPACE
+SPACE  -> @ -> , -> l -> / -> p -> 0 -> BACK -> 1 -> q -> a
+a  -> q -> w -> 2 -> 3 -> 4 -> 5 -> 6 -> y
+y  -> h -> b -> SPACE -> @ -> , -> l -> / -> p -> 0 -> BACK -> 1 -> 2 -> 3 -> e
+53 steps
 

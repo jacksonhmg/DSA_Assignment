@@ -13,6 +13,13 @@ public class keyMeUp
             System.out.println("Please enter in the format of 'java keyMeUp -i' for interative or 'java keyMeUp -s keyFile strFile pathFile' for silent mode");
             return;
         }
+        if(args.length > 4)
+        {
+            for(int i = 3; i < args.length - 1; i++)
+            {
+                args[2] = args[2] + " " + args[i];
+            }
+        }
         if(args[0].equals("-i"))
         {
             inpCheck = 0;
@@ -21,10 +28,10 @@ public class keyMeUp
         {
             readInGraph(args,graph);
 
-            File f= new File(args[3]);//file to be deleted
+            File f= new File(args[args.length - 1]);//file to be deleted
             f.delete();
             System.out.println();
-            graph.displayRankedPaths(args[2], args[3]);
+            graph.displayRankedPaths(args[2], args[args.length - 1]);
         }
         else
         {

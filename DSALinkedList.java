@@ -69,6 +69,7 @@ public class DSALinkedList implements Iterable, Serializable
 		Iterator ill = this.iterator();
 		while(ill.hasNext())
 		{
+			ill.next();
 			count++;
 		}
 		return count;
