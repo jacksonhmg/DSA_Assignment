@@ -19,7 +19,12 @@ public class keyMeUp
         }
         else if(args[0].equals("-s"))
         {
-            inpCheck = 1;
+            readInGraph(args,graph);
+
+            File f= new File(args[3]);//file to be deleted
+            f.delete();
+            System.out.println();
+            graph.displayRankedPaths(args[2], args[3]);
         }
         else
         {
@@ -27,52 +32,6 @@ public class keyMeUp
             return;
         }
 
-        if(inpCheck == 1)
-        {
-            
-        
-            try{
-                File myObj = new File(args[1]);
-                Scanner myReader = new Scanner(myObj);
-                while (myReader.hasNextLine())
-                {
-                    String data = myReader.nextLine();
-                    String[] sArray = processLine(data);
-                    for(int i = 0; i < sArray.length; i++)
-                    {
-                        boolean directed = false;
-                        if(sArray[i].length() > 2)
-                        {
-                            if(sArray[i].charAt(0) == '-' && sArray[i].charAt(1) == 'd')
-                            {
-                                directed = true;
-                                sArray[i] = sArray[i].substring(2,sArray[i].length());
-                            }
-                        }
-                        graph.addVertex(sArray[i], sArray[i]);
-                        if(i != 0)
-                        {
-                            graph.addEdge(sArray[0], sArray[i], directed);
-                        }
-                    }
-                }
-                myReader.close();
-            } catch (FileNotFoundException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-            }
-        }
-
-        //graph.displayAsList();
-        //graph.displayAsList();
-        System.out.println();
-        int x = graph.breadthStringPath(args[2]);
-        System.out.println(x + " steps");
-
-        System.out.println();
-        x = graph.depthStringPath(args[2],"depth.txt");
-        System.out.println(x + " steps");
-        // graph.displayAsMatrix();
 
     }
 
@@ -83,6 +42,40 @@ public class keyMeUp
         return splitLine;
     }
 
+
+    public static void readInGraph(String[] args, DSAGraph graph)
+    {
+        try{
+            File myObj = new File(args[1]);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine())
+            {
+                String data = myReader.nextLine();
+                String[] sArray = processLine(data);
+                for(int i = 0; i < sArray.length; i++)
+                {
+                    boolean directed = false;
+                    if(sArray[i].length() > 2)
+                    {
+                        if(sArray[i].charAt(0) == '-' && sArray[i].charAt(1) == 'd')
+                        {
+                            directed = true;
+                            sArray[i] = sArray[i].substring(2,sArray[i].length());
+                        }
+                    }
+                    graph.addVertex(sArray[i], sArray[i]);
+                    if(i != 0)
+                    {
+                        graph.addEdge(sArray[0], sArray[i], directed);
+                    }
+                }
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
     
 
 }

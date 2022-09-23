@@ -1,0 +1,26 @@
+Breadth wins for bigtest123! 
+
+Breadth path:
+b  -> h -> y -> u -> i
+i  -> u -> y -> t -> g
+g  -> t
+t  -> r -> e
+e  -> w -> s
+s  -> w -> e -> r -> t
+t  -> 5 -> 4 -> 3 -> 2 -> 1
+1  -> 2
+2  -> 3
+24 steps
+
+Depth path:
+b  -> SPACE -> @ -> OK -> .com -> www. -> - -> p -> o -> i
+i  -> k -> m -> SPACE -> 123 -> x -> d -> f -> g
+g  -> t
+t  -> r -> e
+e  -> w -> s
+s  -> a -> CAPS -> GLOBE -> OK -> . -> , -> l -> k -> j -> h -> g -> t
+t  -> g -> v -> SPACE -> @ -> OK -> .com -> www. -> - -> BACK -> 1
+1  -> 2
+2  -> 3
+46 steps
+

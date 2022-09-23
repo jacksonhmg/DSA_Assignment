@@ -240,7 +240,7 @@ public class DSAGraph{
     }
 
 
-    public int breadthFirstSearchFind(Object source, Object dest)
+    public int breadthFirstSearchFind(Object source, Object dest, String pFileName)
     {
 
         DSAQueue T = new DSAQueue();
@@ -271,7 +271,7 @@ public class DSAGraph{
                 }
                 if(w.getLabel().equals(dest))
                 {
-                    return shortestPathBreadth(T, getVertex(dest), getVertex(source));
+                    return shortestPathBreadth(T, getVertex(dest), getVertex(source), pFileName);
                 }
             }
         }
@@ -280,7 +280,7 @@ public class DSAGraph{
 
 
 
-    public int shortestPathBreadth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source)
+    public int shortestPathBreadth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, String pFileName)
     {
         DSALinkedList list = new DSALinkedList();
         int count = 0;
@@ -302,16 +302,17 @@ public class DSAGraph{
             }
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
+        saveList(pFileName, list);
         return printList(list);
     }
 
 
-    public int breadthStringPath(String string)
-    {
+    public int breadthStringPath(String string, String pFileName)
+    { 
         int count = 0;
         for(int i = 0; i < string.length()-1; i++)
         {
-            count += breadthFirstSearchFind(String.valueOf(string.charAt(i)), String.valueOf(string.charAt(i+1)));
+            count += breadthFirstSearchFind(String.valueOf(string.charAt(i)), String.valueOf(string.charAt(i+1)), pFileName);
         }
         return count;
     }
@@ -436,17 +437,18 @@ public class DSAGraph{
         while(ill2.hasNext())
         {
             DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
-            System.out.print(printV.getLabel() + " ");
+            System.out.print(printV.getLabel() + " -> ");
             count ++;
         }
         System.out.println();
         return count-1;
     }
 
-    public void saveList(String pFileName, DSALinkedList list)
+    public int saveList(String pFileName, DSALinkedList list)
     {
         //FileOutputStream fileStrm = null;
         PrintWriter pw;
+        int count = 0;
         try {
             //fileStrm = new FileOutputStream(pFileName);
             pw = new PrintWriter(new FileWriter(pFileName,true));
@@ -454,21 +456,28 @@ public class DSAGraph{
             while(ill2.hasNext())
             {
                 DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
-                pw.print(printV.getLabel() + " ");
+                if(count == 0)
+                {
+                    pw.print(printV.getLabel() + " ");
+                }
+                else
+                {
+                    pw.print(" -> " + printV.getLabel());
+                }
+                
+                count++;
             }
             pw.println();
             pw.close();
         } catch (IOException e) {
             System.out.println("Error in writing to file" + e.getMessage());
         }
-
+        return count;
     }
 
 
     public int depthStringPath(String string, String pFileName)
     {
-        File f= new File(pFileName);           //file to be delete  
-        f.delete();  
         int count = 0;
         for(int i = 0; i < string.length()-1; i++)
         {
@@ -479,15 +488,55 @@ public class DSAGraph{
 
 
     public static void writeOneRow(String pFileName, String pInputString){
-        FileOutputStream fileStrm = null;
+        //FileOutputStream fileStrm = null;
         PrintWriter pw;
         try {
-            fileStrm = new FileOutputStream(pFileName);
-            pw = new PrintWriter(fileStrm);
+            //fileStrm = new FileOutputStream(pFileName);
+            pw = new PrintWriter(new FileWriter(pFileName,true));
             pw.println(pInputString);
             pw.close();
         } catch (IOException e) {
             System.out.println("Error in writing to file" + e.getMessage());
+        }
+    }
+
+    public void displayRankedPaths(String inputString, String pFileName)
+    {
+        if(depthStringPath(inputString, pFileName) < breadthStringPath(inputString, pFileName))
+        {
+            File f= new File(pFileName);           //file to be delete  
+            f.delete();
+            writeOneRow(pFileName, "Depth wins for " + inputString + "! \n");
+            writeOneRow(pFileName, "Depth path:");
+            int x = depthStringPath(inputString, pFileName);
+            writeOneRow(pFileName, x + " steps\n");
+            writeOneRow(pFileName, "Breadth path:");
+            x = breadthStringPath(inputString, pFileName);
+            writeOneRow(pFileName, x + " steps\n");
+        }
+        else if(breadthStringPath(inputString, pFileName) < depthStringPath(inputString,pFileName))
+        {
+            File f= new File(pFileName);           //file to be delete  
+            f.delete();
+            writeOneRow(pFileName, "Breadth wins for " + inputString + "! \n");
+            writeOneRow(pFileName, "Breadth path:");
+            int x = breadthStringPath(inputString, pFileName);
+            writeOneRow(pFileName, x + " steps\n");
+            writeOneRow(pFileName, "Depth path:");
+            x = depthStringPath(inputString, pFileName);
+            writeOneRow(pFileName, x + " steps\n");
+        }
+        else
+        {
+            File f= new File(pFileName);           //file to be delete  
+            f.delete();
+            writeOneRow(pFileName, "TIE for " + inputString + "! \n");
+            writeOneRow(pFileName, "Breadth path:");
+            int x = breadthStringPath(inputString, pFileName);
+            writeOneRow(pFileName, x + " steps\n");
+            writeOneRow(pFileName, "Depth path:");
+            x = depthStringPath(inputString, pFileName);
+            writeOneRow(pFileName, x + " steps\n");
         }
     }
 
