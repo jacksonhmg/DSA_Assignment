@@ -309,21 +309,67 @@ public class DSAGraph{
     public int breadthStringPath(String string, String pFileName)
     { 
         int count = 0;
-        String[] strArr = null;
-        strArr = string.split("");
+        String[] strArr = stringFix(string);
         for(int i = 0; i < strArr.length-1; i++)
         {
+            count += breadthFirstSearchFind(strArr[i], strArr[i+1], pFileName);
+        }
+        return count;
+    }
+
+
+    public String[] stringFix(String string)
+    {
+        int count = 0;
+        String[] strArr = string.split("");
+        for(int i = 0; i < strArr.length; i++)
+        {
+            if(Character.isUpperCase(strArr[i].charAt(0)))
+            {
+                String[] strArr2 = new String[strArr.length + 1];
+                for(int j = 0; j < strArr2.length; j++)
+                {
+                    if(j<i)
+                    {
+                        strArr2[j] = strArr[j];
+                    }
+                    else if(j==i)
+                    {
+                        strArr2[j] = "CAPS";
+                    }
+                    else if(j==i+1)
+                    {
+                        strArr2[j] = strArr[i];
+                    }
+                    else
+                    {
+                        strArr2[j] = strArr[j-1];
+                    }
+                }
+                strArr = strArr2;
+                i +=1;
+                count ++;
+            }
             if(strArr[i].equals(" "))
             {
                 strArr[i] = "SPACE";
             }
-            if(strArr[i+1].equals(" "))
+            if(strArr[i].length() < 2)
             {
-                strArr[i+1] = "SPACE";
+                strArr[i] = strArr[i].toLowerCase();
+
             }
-            count += breadthFirstSearchFind(strArr[i], strArr[i+1], pFileName);
+            
+            /*System.out.println(strArr[i]);
+            System.out.println(i);
+            System.out.println(strArr.length);*/
+            if(i == strArr.length - 1)
+            {
+                break;
+            }
+            
         }
-        return count;
+        return strArr;
     }
 
 
@@ -373,6 +419,7 @@ public class DSAGraph{
             v.clearVisited();
         }
         DSAGraphVertex v = getVertex(source);
+        //System.out.println("\n" + v.getLabel());
         v.setVisited();
         S.push(v);
         T.enqueue(v);
@@ -382,7 +429,6 @@ public class DSAGraph{
             while(ill.hasNext())
             {
                 DSAGraphVertex w = (DSAGraphVertex)ill.next();
-                
                 if(!(w.getVisited()))
                 {
                     T.enqueue(v);
@@ -445,6 +491,7 @@ public class DSAGraph{
 
     public int saveList(String pFileName, DSALinkedList list)
     {
+        boolean capCheck = false;
         PrintWriter pw;
         int count = 0;
         try {
@@ -456,10 +503,19 @@ public class DSAGraph{
                 if(count == 0)
                 {
                     pw.print(printV.getLabel() + " ");
+                    if(printV.getLabel().equals("CAPS"))
+                    {
+                        capCheck = true;
+                    }
                 }
                 else
                 {
-                    pw.print(" -> " + printV.getLabel());
+                    String printString = (String)printV.getLabel();
+                    if(capCheck)
+                    {
+                        printString = printString.toUpperCase();
+                    }
+                    pw.print(" -> " + printString);
                 }
                 
                 count++;
@@ -476,19 +532,9 @@ public class DSAGraph{
     public int depthStringPath(String string, String pFileName)
     {
         int count = 0;
-        String[] strArr = null;
-        strArr = string.split("");
+        String[] strArr = stringFix(string);
         for(int i = 0; i < strArr.length-1; i++)
         {
-            if(strArr[i].equals(" "))
-            {
-                strArr[i] = "SPACE";
-            }
-            if(strArr[i+1].equals(" "))
-            {
-                strArr[i+1] = "SPACE";
-            }
-            //System.out.println(strArr[i]+"\n");
             count += depthFirstSearchFind(strArr[i], strArr[i+1], pFileName);
         }
         return count;

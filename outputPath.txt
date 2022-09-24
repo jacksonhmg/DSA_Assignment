@@ -1,22 +1,54 @@
-Breadth wins for sEan aye! 
+Breadth wins for sEaN brO thAt suckS! 
 
 Breadth path:
-s  -> w -> 2 -> 3 -> E
-E  -> 3 -> 2 -> 1 -> q -> a
-a  -> CAPS -> z -> 123 -> SPACE -> b -> n
+s  -> a -> CAPS
+CAPS  -> A -> Q -> W -> E
+e  -> w -> q -> a
+a  -> CAPS
+CAPS  -> Z -> 123 -> SPACE -> B -> N
 n  -> SPACE
-SPACE  -> 123 -> z -> s -> a
-a  -> q -> w -> e -> r -> t -> y
-y  -> t -> r -> e
-29 steps
+SPACE  -> b
+b  -> h -> y -> t -> r
+r  -> e -> w -> q -> a -> CAPS
+CAPS  -> GLOBE -> OK -> . -> / -> P -> O
+o  -> i -> k -> m -> SPACE
+SPACE  -> b -> h -> y -> t
+t  -> y -> h
+h  -> b -> SPACE -> 123 -> z -> CAPS
+CAPS  -> A
+a  -> q -> w -> e -> r -> t
+t  -> g -> v -> SPACE
+SPACE  -> 123 -> z -> s
+s  -> w -> e -> r -> t -> y -> u
+u  -> y -> t -> r -> f -> c
+c  -> f -> g -> h -> j -> k
+k  -> m -> SPACE -> 123 -> z -> CAPS
+CAPS  -> A -> S
+82 steps
 
 Depth path:
-s  -> z -> 123 -> X -> D -> E
-E  -> W -> S -> Z -> CAPS -> a
-a  -> CAPS -> z -> 123 -> SPACE -> B -> N -> M -> , -> m -> n
+s  -> a -> CAPS
+CAPS  -> Z -> 123 -> SPACE -> B -> H -> Y -> T -> R -> E
+e  -> w -> s -> a
+a  -> CAPS
+CAPS  -> Z -> 123 -> SPACE -> B -> N
 n  -> SPACE
-SPACE  -> @ -> , -> l -> / -> p -> 0 -> BACK -> 1 -> q -> a
-a  -> q -> w -> 2 -> 3 -> 4 -> 5 -> 6 -> y
-y  -> h -> b -> SPACE -> @ -> , -> l -> / -> p -> 0 -> BACK -> 1 -> 2 -> 3 -> e
-53 steps
+SPACE  -> b
+b  -> h -> y -> t -> r
+r  -> e -> d -> x -> z -> CAPS
+CAPS  -> Z -> 123 -> SPACE -> B -> H -> J -> K -> I -> O
+o  -> i -> k -> m -> SPACE
+SPACE  -> @ -> OK -> . -> / -> l -> k -> j -> u -> y -> t
+t  -> y -> h
+h  -> b -> SPACE -> 123 -> z -> CAPS
+CAPS  -> A
+a  -> CAPS -> GLOBE -> OK -> . -> , -> l -> k -> j -> h -> g -> t
+t  -> g -> v -> SPACE
+SPACE  -> 123 -> z -> s
+s  -> a -> CAPS -> GLOBE -> OK -> . -> , -> l -> k -> j -> u
+u  -> j -> n -> SPACE -> 123 -> x -> c
+c  -> SPACE -> @ -> OK -> . -> / -> l -> k
+k  -> m -> SPACE -> 123 -> z -> CAPS
+CAPS  -> A -> S
+109 steps
 
