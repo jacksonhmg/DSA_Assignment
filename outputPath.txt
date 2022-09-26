@@ -1,92 +1,34 @@
-Breadth wins for yoooo first TesT of Interactive PATH! 
+Breadth wins for hEy me, Test! 
 
 Breadth path:
-y  -> u -> i -> o
-o  -> 9 -> o
-o  -> 9 -> o
-o  -> 9 -> o
-o  -> i -> k -> m -> SPACE
-SPACE  -> b -> h -> g -> f
-f  -> r -> t -> y -> u -> i
-i  -> u -> y -> t -> r
-r  -> e -> w -> s
-s  -> w -> e -> r -> t
-t  -> g -> v -> SPACE
+h  -> b -> SPACE -> 123 -> z -> CAPS
+CAPS  -> A -> Q -> W -> E
+e  -> r -> t -> y
+y  -> h -> b -> SPACE
+SPACE  -> b -> n -> m
+m  -> SPACE -> 123 -> x -> d -> e
+e  -> r -> f -> c -> SPACE -> @ -> ,
+,  -> m -> SPACE
 SPACE  -> 123 -> z -> CAPS
 CAPS  -> A -> Q -> W -> E -> R -> T
 t  -> r -> e
 e  -> w -> s
-s  -> a -> CAPS
-CAPS  -> A -> Q -> W -> E -> R -> T
-t  -> g -> v -> SPACE
-SPACE  -> @ -> , -> l -> o
-o  -> i -> u -> y -> t -> r -> f
-f  -> c -> SPACE
-SPACE  -> 123 -> z -> CAPS
-CAPS  -> GLOBE -> OK -> . -> / -> P -> O -> I
-i  -> u -> j -> n
-n  -> j -> u -> y -> t
-t  -> r -> e
-e  -> r
-r  -> e -> w -> q -> a
-a  -> CAPS -> z -> x -> c
-c  -> f -> r -> t
-t  -> y -> u -> i
-i  -> u -> y -> t -> g -> v
-v  -> g -> t -> r -> e
-e  -> r -> f -> c -> SPACE
-SPACE  -> 123 -> z -> CAPS
-CAPS  -> GLOBE -> OK -> . -> / -> P
-p  -> / -> . -> OK -> GLOBE -> CAPS
-CAPS  -> A
-a  -> CAPS
-CAPS  -> A -> Q -> W -> E -> R -> T
-t  -> r -> e -> w -> q -> a -> CAPS
-CAPS  -> Z -> 123 -> SPACE -> B -> H
-151 steps
+s  -> w -> e -> r -> t
+48 steps
 
 Depth path:
-y  -> h -> b -> SPACE -> @ -> OK -> .com -> www. -> - -> p -> o
-o  -> 9 -> o
-o  -> 9 -> o
-o  -> 9 -> o
-o  -> i -> k -> m -> SPACE
-SPACE  -> b -> h -> g -> f
-f  -> c -> SPACE -> @ -> OK -> .com -> www. -> - -> p -> o -> i
-i  -> o -> l -> , -> @ -> OK -> .com -> www. -> - -> BACK -> 1 -> 2 -> w -> e -> r
-r  -> e -> d -> s
-s  -> a -> CAPS -> GLOBE -> OK -> . -> , -> l -> k -> j -> h -> g -> t
-t  -> g -> v -> SPACE
+h  -> b -> SPACE -> 123 -> z -> CAPS
+CAPS  -> Z -> 123 -> SPACE -> B -> H -> Y -> T -> R -> E
+e  -> d -> x -> 123 -> GLOBE -> OK -> . -> , -> l -> k -> j -> h -> y
+y  -> h -> b -> SPACE
+SPACE  -> @ -> OK -> . -> / -> l -> k -> m
+m  -> k -> i -> u -> y -> t -> r -> e
+e  -> d -> x -> 123 -> GLOBE -> OK -> . -> ,
+,  -> m -> SPACE
 SPACE  -> 123 -> z -> CAPS
 CAPS  -> Z -> 123 -> SPACE -> B -> H -> Y -> T
 t  -> r -> e
 e  -> w -> s
-s  -> a -> CAPS
-CAPS  -> Z -> 123 -> SPACE -> B -> H -> Y -> T
-t  -> g -> v -> SPACE
-SPACE  -> @ -> OK -> .com -> www. -> - -> p -> o
-o  -> i -> k -> m -> SPACE -> 123 -> x -> d -> f
-f  -> c -> SPACE
-SPACE  -> 123 -> z -> CAPS
-CAPS  -> Z -> 123 -> SPACE -> B -> H -> J -> K -> I
-i  -> u -> j -> n
-n  -> j -> u -> y -> t
-t  -> r -> e
-e  -> r
-r  -> e -> d -> x -> z -> CAPS -> a
-a  -> s -> d -> x -> c
-c  -> SPACE -> @ -> OK -> . -> / -> l -> k -> j -> u -> y -> t
-t  -> g -> v -> SPACE -> @ -> OK -> .com -> www. -> - -> p -> o -> i
-i  -> u -> j -> n -> b -> v
-v  -> g -> t -> r -> e
-e  -> r -> f -> c -> SPACE
-SPACE  -> 123 -> z -> CAPS
-CAPS  -> Z -> 123 -> SPACE -> B -> H -> J -> K -> I -> O -> P
-p  -> / -> . -> OK -> GLOBE -> CAPS
-CAPS  -> A
-a  -> CAPS
-CAPS  -> Z -> 123 -> SPACE -> B -> H -> Y -> T
-t  -> g -> v -> SPACE -> 123 -> z -> CAPS
-CAPS  -> Z -> 123 -> SPACE -> B -> H
-213 steps
+s  -> a -> CAPS -> GLOBE -> OK -> . -> , -> l -> k -> j -> h -> g -> t
+78 steps
 

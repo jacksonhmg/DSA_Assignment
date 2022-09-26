@@ -23,7 +23,7 @@ public class keyMeUp
             while(loop)
             {
                 System.out.println("(1) Load operations");
-                System.out.println("(2) Alter graph (nodes, edges)");
+                System.out.println("(2) Node and edge operations");
                 System.out.println("(3) Display graph operations");
                 System.out.println("(4) Path operations");
                 System.out.println("(5) Save keyboard to file");
@@ -43,6 +43,9 @@ public class keyMeUp
                                 sc.nextLine();
                                 String inputFile = sc.nextLine();
                                 readInGraph(inputFile, graph);
+                            break;
+                            case 2:
+                                
                             break;
                         }
                     break;
@@ -104,11 +107,15 @@ public class keyMeUp
                                         }
                                         else if(graph.hasEdge(label1, label2) && !(graph.hasEdge(label2, label1)))
                                         {
-                                            System.out.println("There is a directional edge going from label1 to label2");
+                                            System.out.println("There is a directional edge going from " + label1 + " to " + label2);
                                         }
                                         else if(graph.hasEdge(label2, label1) && !(graph.hasEdge(label1, label2)))
                                         {
-                                            System.out.println("There is a directional edge going from label2 to label1");
+                                            System.out.println("There is a directional edge going from " + label2 + " to " + label1);
+                                        }
+                                        else if(!(graph.hasEdge(label2, label1)) && !(graph.hasEdge(label1, label2)))
+                                        {
+                                            System.out.println("There is no edge between these two labels");
                                         }
                                     break;
                                     
@@ -118,7 +125,7 @@ public class keyMeUp
                                         Object soLabel = sc.nextLine();
                                         System.out.println("Enter second vertex (if edge is directed, this should be your sink)");
                                         Object siLabel = sc.nextLine();
-                                        System.out.print("Is this edge directed? Enter true or false");
+                                        System.out.println("Is this edge directed? Enter true or false");
                                         boolean directed = sc.nextBoolean();
                                         graph.addEdge(soLabel, siLabel, directed);
                                     break;
@@ -174,7 +181,7 @@ public class keyMeUp
 
                                     case 2:
                                         graph.displayRankedPaths(pathString, "outputPath.txt", 2);
-                                        System.out.println("\nCheck outputPath.txt for saved path");
+                                        System.out.println("\nCheck outputPath.txt for saved path\n");
                                     break;
                                 }
                             break;

@@ -495,6 +495,10 @@ public class DSAGraph{
             saveList(pFileName, list);
             printList(list);
         }
+        else if(option == 4)
+        {
+
+        }
         return list.length() -1;
     }
 
@@ -502,11 +506,31 @@ public class DSAGraph{
     public int printList(DSALinkedList list)
     {
         int count = 0;
+        boolean capCheck = false;
         Iterator ill2 = list.iterator();
         while(ill2.hasNext())
         {
             DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
-            System.out.print(printV.getLabel() + " -> ");
+            if(count == 0)
+                {
+                    System.out.print(printV.getLabel() + " ");
+                    if(printV.getLabel().equals("CAPS"))
+                    {
+                        capCheck = true;
+                    }
+                }
+                else
+                {
+                    String printString = (String)printV.getLabel();
+                    if(capCheck)
+                    {
+                        printString = printString.toUpperCase();
+                    }
+                    System.out.print(" -> " + printString);
+                }
+                
+                count++;
+            //System.out.print(printV.getLabel() + " -> ");
             count ++;
         }
         System.out.println();
@@ -584,24 +608,34 @@ public class DSAGraph{
             File f= new File(pFileName);           //file to be delete  
             f.delete();
             writeOneRow(pFileName, "Depth wins for " + inputString + "! \n");
+            System.out.println("Depth wins for " + inputString + "! \n");
             writeOneRow(pFileName, "Depth path:");
+            System.out.println("Depth path:");
             int x = depthStringPath(inputString, pFileName, option);
             writeOneRow(pFileName, x + " steps\n");
+            System.out.println(x + " steps\n");
             writeOneRow(pFileName, "Breadth path:");
+            System.out.println("Breadth path:");
             x = breadthStringPath(inputString, pFileName, option);
             writeOneRow(pFileName, x + " steps\n");
+            System.out.println(x + " steps\n");
         }
         else if(breadthStringPath(inputString, pFileName, 4) < depthStringPath(inputString,pFileName, 4))
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
             writeOneRow(pFileName, "Breadth wins for " + inputString + "! \n");
+            System.out.println("Breadth wins for " + inputString + "! \n");
             writeOneRow(pFileName, "Breadth path:");
+            System.out.println( "Breadth path:");
             int x = breadthStringPath(inputString, pFileName, option);
             writeOneRow(pFileName, x + " steps\n");
+            System.out.println(x + " steps\n");
             writeOneRow(pFileName, "Depth path:");
+            System.out.println( "Depth path:");
             x = depthStringPath(inputString, pFileName, option);
             writeOneRow(pFileName, x + " steps\n");
+            System.out.println(x + " steps\n");
         }
         else
         {
