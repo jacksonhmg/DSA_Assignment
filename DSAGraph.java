@@ -607,8 +607,8 @@ public class DSAGraph{
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
-            writeOneRow(pFileName, "Depth wins for " + inputString + "! \n");
-            System.out.println("Depth wins for " + inputString + "! \n");
+            writeOneRow(pFileName, "Depth wins for " + inputString + " ! \n");
+            System.out.println("Depth wins for " + inputString + " ! \n");
             writeOneRow(pFileName, "Depth path:");
             System.out.println("Depth path:");
             int x = depthStringPath(inputString, pFileName, option);
@@ -624,8 +624,8 @@ public class DSAGraph{
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
-            writeOneRow(pFileName, "Breadth wins for " + inputString + "! \n");
-            System.out.println("Breadth wins for " + inputString + "! \n");
+            writeOneRow(pFileName, "Breadth wins for " + inputString + " ! \n");
+            System.out.println("Breadth wins for " + inputString + " ! \n");
             writeOneRow(pFileName, "Breadth path:");
             System.out.println( "Breadth path:");
             int x = breadthStringPath(inputString, pFileName, option);

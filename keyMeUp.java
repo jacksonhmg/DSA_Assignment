@@ -22,7 +22,7 @@ public class keyMeUp
             
             while(loop)
             {
-                System.out.println("(1) Load operations");
+                System.out.println("(1) Load keyboard file");
                 System.out.println("(2) Node and edge operations");
                 System.out.println("(3) Display graph operations");
                 System.out.println("(4) Path operations");
@@ -33,27 +33,16 @@ public class keyMeUp
                 {
                     
                     case 1:
-                        System.out.println("(1) Load pre-existing keyboard file (switch, unknown, stan, netflix, etc");
-                        System.out.println("(2) Load saved keyboard");
-                        int input2 = sc.nextInt();
-                        switch(input2)
-                        {
-                            case 1:
-                                System.out.println("Enter filename to read keyboard from:");
-                                sc.nextLine();
-                                String inputFile = sc.nextLine();
-                                readInGraph(inputFile, graph);
-                            break;
-                            case 2:
-                                
-                            break;
-                        }
+                        System.out.println("Enter filename to read keyboard from:");
+                        sc.nextLine();
+                        String inputFile = sc.nextLine();
+                        readInGraph(inputFile, graph);
                     break;
 
                     case 2:
                         System.out.println("(1) Node operations (find, insert, delete, update)");
                         System.out.println("(2) Edge operations (find, add, remove, update)");
-                        input2 = sc.nextInt();
+                        int input2 = sc.nextInt();
                         switch(input2)
                         {
                             case 1:
@@ -204,7 +193,14 @@ public class keyMeUp
                             while(vIll2.hasNext())
                             {
                                 DSAGraphVertex y = (DSAGraphVertex)vIll2.next();
-                                writeString += " " + y.getLabel();
+                                if(graph.hasEdge(w.getLabel(), y.getLabel()) && !graph.hasEdge(y.getLabel(), w.getLabel()))
+                                {
+                                    writeString += " -d" + y.getLabel();
+                                }
+                                else
+                                {
+                                    writeString += " " + y.getLabel();
+                                }
                             }
                             DSAGraph.writeOneRow(saveFile, writeString);
                         }

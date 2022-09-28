@@ -34,11 +34,11 @@ www. - / .com
 CAPS a z GLOBE
 z s CAPS x 123
 x d z c 123
-c f x v SPACE
-v g c b SPACE
+c f x v -dSPACE
+v g c b -dSPACE
 b h v n SPACE
-n j b m SPACE
-m k n , SPACE
+n j b m -dSPACE
+m k n , -dSPACE
 , l m . @
 . / , .com OK
 .com www. . OK
@@ -47,4 +47,4 @@ SPACE b @ 123
 @ , SPACE OK
 OK . .com GLOBE @
 GLOBE CAPS 123 OK
-? SPACE
+? -dSPACE

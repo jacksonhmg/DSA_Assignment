@@ -1,34 +1,28 @@
-Breadth wins for hEy me, Test! 
+Breadth wins for jackson123?! 
 
 Breadth path:
-h  -> b -> SPACE -> 123 -> z -> CAPS
-CAPS  -> A -> Q -> W -> E
-e  -> r -> t -> y
-y  -> h -> b -> SPACE
-SPACE  -> b -> n -> m
-m  -> SPACE -> 123 -> x -> d -> e
-e  -> r -> f -> c -> SPACE -> @ -> ,
-,  -> m -> SPACE
-SPACE  -> 123 -> z -> CAPS
-CAPS  -> A -> Q -> W -> E -> R -> T
-t  -> r -> e
-e  -> w -> s
-s  -> w -> e -> r -> t
-48 steps
+j  -> h -> g -> f -> d -> s -> a
+a  -> CAPS -> z -> x -> c
+c  -> f -> g -> h -> j -> k
+k  -> m -> SPACE -> 123 -> z -> s
+s  -> w -> 2 -> 1 -> BACK -> 0 -> 9 -> o
+o  -> i -> u -> j -> n
+n  -> SPACE -> 123 -> z -> s -> w -> 2 -> 1
+1  -> 2
+2  -> 3
+3  -> 4 -> r -> f -> c -> SPACE -> ?
+46 steps
 
 Depth path:
-h  -> b -> SPACE -> 123 -> z -> CAPS
-CAPS  -> Z -> 123 -> SPACE -> B -> H -> Y -> T -> R -> E
-e  -> d -> x -> 123 -> GLOBE -> OK -> . -> , -> l -> k -> j -> h -> y
-y  -> h -> b -> SPACE
-SPACE  -> @ -> OK -> . -> / -> l -> k -> m
-m  -> k -> i -> u -> y -> t -> r -> e
-e  -> d -> x -> 123 -> GLOBE -> OK -> . -> ,
-,  -> m -> SPACE
-SPACE  -> 123 -> z -> CAPS
-CAPS  -> Z -> 123 -> SPACE -> B -> H -> Y -> T
-t  -> r -> e
-e  -> w -> s
-s  -> a -> CAPS -> GLOBE -> OK -> . -> , -> l -> k -> j -> h -> g -> t
-78 steps
+j  -> n -> SPACE -> 123 -> z -> CAPS -> a
+a  -> s -> d -> x -> c
+c  -> SPACE -> @ -> OK -> . -> / -> l -> k
+k  -> m -> SPACE -> 123 -> z -> s
+s  -> a -> CAPS -> GLOBE -> OK -> . -> , -> l -> o
+o  -> i -> k -> m -> n
+n  -> j -> u -> y -> t -> r -> e -> w -> q -> 1
+1  -> 2
+2  -> 3
+3  -> 4 -> r -> f -> c -> SPACE -> ?
+51 steps
 
