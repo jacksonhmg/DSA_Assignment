@@ -62,6 +62,7 @@ public class keyMeUp
                                             DSAGraphVertex w = (DSAGraphVertex)ill.next();
                                             System.out.print(" " + w.getLabel());
                                         }
+                                        System.out.println();
                                     break;
                                     case 2:
                                         System.out.println("Enter node label to insert");
@@ -202,7 +203,7 @@ public class keyMeUp
                                     writeString += " " + y.getLabel();
                                 }
                             }
-                            DSAGraph.writeOneRow(saveFile, writeString);
+                            Helpers.writeOneRow(saveFile, writeString);
                         }
                     break;
 
@@ -229,20 +230,7 @@ public class keyMeUp
 
 
     }
-
-    public static String[] processLine(String csvRow)
-    {  //reading one row of a file at a time, separated by string.split method
-        String[] splitLine;
-        splitLine = csvRow.split(" "); 
-        return splitLine;
-    }
-
-    public static String[] processLine2(String csvRow)
-    {  //reading one row of a file at a time, separated by string.split method
-        String[] splitLine;
-        splitLine = csvRow.split(""); 
-        return splitLine;
-    }
+    
 
     public static String readInString(String[] args)
     {
@@ -252,7 +240,7 @@ public class keyMeUp
             File myObj = new File(args[2]);
             Scanner myReader = new Scanner(myObj);
             String data = myReader.nextLine();
-            sArray = processLine2(data);
+            sArray = Helpers.processLine2(data);
             for(int i = 0; i < sArray.length; i++)
             {
                 string += sArray[i];
@@ -273,7 +261,7 @@ public class keyMeUp
             while (myReader.hasNextLine())
             {
                 String data = myReader.nextLine();
-                String[] sArray = processLine(data);
+                String[] sArray = Helpers.processLine(data);
                 for(int i = 0; i < sArray.length; i++)
                 {
                     boolean directed = false;

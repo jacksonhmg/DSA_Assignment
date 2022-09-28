@@ -208,39 +208,6 @@ public class DSAGraph{
         }
     }
 
-
-    public void breadthFirstSearch()
-    {
-        DSAQueue T = new DSAQueue();
-        DSAQueue Q = new DSAQueue();
-        Iterator clearILL = vertices.iterator();
-        while(clearILL.hasNext())
-        {
-            DSAGraphVertex v = (DSAGraphVertex)clearILL.next();
-            v.clearVisited();
-        }
-        DSAGraphVertex v = (DSAGraphVertex)vertices.head.getValue();
-        v.setVisited();
-        Q.enqueue(v);
-        while(!(Q.isEmpty()))
-        {
-            v = (DSAGraphVertex)Q.dequeue();
-            Iterator ill = (v.getAdjacent()).iterator();
-            while(ill.hasNext())
-            {
-                DSAGraphVertex w = (DSAGraphVertex)ill.next();
-                if(!(w.getVisited()))
-                {
-                    T.enqueue(v);
-                    T.enqueue(w);
-                    w.setVisited();
-                    Q.enqueue(w);
-                }
-            }
-        }
-    }
-
-
     public int breadthFirstSearchFind(Object source, Object dest, String pFileName, int option)
     {
 
@@ -279,8 +246,6 @@ public class DSAGraph{
         return 0;
     }
 
-
-
     public int shortestPathBreadth(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, String pFileName, int option)
     {
         DSALinkedList list = new DSALinkedList();
@@ -304,121 +269,30 @@ public class DSAGraph{
         } while(!((v.getLabel()).equals(source.getLabel())));
         if(option == 0)
         {
-            saveList(pFileName, list);
+            Helpers.saveList(pFileName, list);
         }
         else if(option == 1)
         {
-            printList(list);
+            Helpers.printList(list);
         }
         else if(option == 2)
         {
-            saveList(pFileName, list);
-            printList(list);
+            Helpers.saveList(pFileName, list);
+            Helpers.printList(list);
         }
         return list.length() - 1;
     }
 
-
     public int breadthStringPath(String string, String pFileName, int option)
     { 
         int count = 0;
-        String[] strArr = stringFix(string);
+        String[] strArr = Helpers.stringFix(string, this);
         for(int i = 0; i < strArr.length-1; i++)
         {
             count += breadthFirstSearchFind(strArr[i], strArr[i+1], pFileName, option);
         }
         return count;
     }
-
-
-    public String[] stringFix(String string)
-    {
-        int count = 0;
-        String[] strArr = string.split("");
-        for(int i = 0; i < strArr.length; i++)
-        {
-            if(Character.isUpperCase(strArr[i].charAt(0)))
-            {
-                String[] strArr2 = new String[strArr.length + 1];
-                for(int j = 0; j < strArr2.length; j++)
-                {
-                    if(j<i)
-                    {
-                        strArr2[j] = strArr[j];
-                    }
-                    else if(j==i)
-                    {
-                        strArr2[j] = "CAPS";
-                    }
-                    else if(j==i+1)
-                    {
-                        strArr2[j] = strArr[i];
-                    }
-                    else
-                    {
-                        strArr2[j] = strArr[j-1];
-                    }
-                }
-                strArr = strArr2;
-                i +=1;
-                count ++;
-            }
-            if(strArr[i].equals(" "))
-            {
-                strArr[i] = "SPACE";
-            }
-            if(strArr[i].length() < 2)
-            {
-                strArr[i] = strArr[i].toLowerCase();
-
-            }
-            
-            /*System.out.println(strArr[i]);
-            System.out.println(i);
-            System.out.println(strArr.length);*/
-            if(i == strArr.length - 1)
-            {
-                break;
-            }
-            
-        }
-        return strArr;
-    }
-
-
-    public void depthFirstSearch()
-    {
-        DSAQueue T = new DSAQueue();
-        DSAStack S = new DSAStack();
-        Iterator clearILL = vertices.iterator();
-        while(clearILL.hasNext())
-        {
-            DSAGraphVertex v = (DSAGraphVertex)clearILL.next();
-            v.clearVisited();
-        }
-        DSAGraphVertex v = (DSAGraphVertex)vertices.head.getValue();
-        v.setVisited();
-        S.push(v);
-        while(!(S.isEmpty()))
-        {
-            Iterator ill = (v.getAdjacent()).iterator();
-            while(ill.hasNext())
-            {
-                DSAGraphVertex w = (DSAGraphVertex)ill.next();
-                if(!(w.getVisited()))
-                {
-                    T.enqueue(v);
-                    T.enqueue(w);
-                    w.setVisited();
-                    S.push(w);
-                    v = w;
-                }
-            }
-            v = (DSAGraphVertex)S.pop();
-        }
-
-    }
-
 
     public int depthFirstSearchFind(Object source, Object dest, String pFileName, int option)
     {
@@ -484,16 +358,16 @@ public class DSAGraph{
         } while(!((v.getLabel()).equals(source.getLabel())));
         if(option == 0)
         {
-            saveList(pFileName, list);
+            Helpers.saveList(pFileName, list);
         }
         else if(option == 1)
         {
-            printList(list);
+            Helpers.printList(list);
         }
         else if(option == 2)
         {
-            saveList(pFileName, list);
-            printList(list);
+            Helpers.saveList(pFileName, list);
+            Helpers.printList(list);
         }
         else if(option == 4)
         {
@@ -502,103 +376,15 @@ public class DSAGraph{
         return list.length() -1;
     }
 
-
-    public int printList(DSALinkedList list)
-    {
-        int count = 0;
-        boolean capCheck = false;
-        Iterator ill2 = list.iterator();
-        while(ill2.hasNext())
-        {
-            DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
-            if(count == 0)
-                {
-                    System.out.print(printV.getLabel() + " ");
-                    if(printV.getLabel().equals("CAPS"))
-                    {
-                        capCheck = true;
-                    }
-                }
-                else
-                {
-                    String printString = (String)printV.getLabel();
-                    if(capCheck)
-                    {
-                        printString = printString.toUpperCase();
-                    }
-                    System.out.print(" -> " + printString);
-                }
-                
-                count++;
-            //System.out.print(printV.getLabel() + " -> ");
-            count ++;
-        }
-        System.out.println();
-        return count-1;
-    }
-
-
-    public int saveList(String pFileName, DSALinkedList list)
-    {
-        boolean capCheck = false;
-        PrintWriter pw;
-        int count = 0;
-        try {
-            pw = new PrintWriter(new FileWriter(pFileName,true));
-            Iterator ill2 = list.iterator();
-            while(ill2.hasNext())
-            {
-                DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
-                if(count == 0)
-                {
-                    pw.print(printV.getLabel() + " ");
-                    if(printV.getLabel().equals("CAPS"))
-                    {
-                        capCheck = true;
-                    }
-                }
-                else
-                {
-                    String printString = (String)printV.getLabel();
-                    if(capCheck)
-                    {
-                        printString = printString.toUpperCase();
-                    }
-                    pw.print(" -> " + printString);
-                }
-                
-                count++;
-            }
-            pw.println();
-            pw.close();
-        } catch (IOException e) {
-            System.out.println("Error in writing to file" + e.getMessage());
-        }
-        return count;
-    }
-
-
     public int depthStringPath(String string, String pFileName, int option)
     {
         int count = 0;
-        String[] strArr = stringFix(string);
+        String[] strArr = Helpers.stringFix(string, this);
         for(int i = 0; i < strArr.length-1; i++)
         {
             count += depthFirstSearchFind(strArr[i], strArr[i+1], pFileName, option);
         }
         return count;
-    }
-
-
-    public static void writeOneRow(String pFileName, String pInputString){
-        PrintWriter pw;
-        try {
-            pw = new PrintWriter(new FileWriter(pFileName,true));
-            pw.println(pInputString);
-            pw.close();
-        } catch (IOException e) {
-            System.out.println("Error in writing to file" + e.getMessage());
-        }
     }
 
     public void displayRankedPaths(String inputString, String pFileName, int option)
@@ -607,47 +393,50 @@ public class DSAGraph{
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
-            writeOneRow(pFileName, "Depth wins for " + inputString + " ! \n");
+            Helpers.writeOneRow(pFileName, "Depth wins for " + inputString + " ! \n");
             System.out.println("Depth wins for " + inputString + " ! \n");
-            writeOneRow(pFileName, "Depth path:");
+            Helpers.writeOneRow(pFileName, "Depth path:");
             System.out.println("Depth path:");
             int x = depthStringPath(inputString, pFileName, option);
-            writeOneRow(pFileName, x + " steps\n");
+            Helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
-            writeOneRow(pFileName, "Breadth path:");
+            Helpers.writeOneRow(pFileName, "Breadth path:");
             System.out.println("Breadth path:");
             x = breadthStringPath(inputString, pFileName, option);
-            writeOneRow(pFileName, x + " steps\n");
+            Helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
+            System.out.println("See " + pFileName + " for saved ranked paths");
         }
         else if(breadthStringPath(inputString, pFileName, 4) < depthStringPath(inputString,pFileName, 4))
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
-            writeOneRow(pFileName, "Breadth wins for " + inputString + " ! \n");
+            Helpers.writeOneRow(pFileName, "Breadth wins for " + inputString + " ! \n");
             System.out.println("Breadth wins for " + inputString + " ! \n");
-            writeOneRow(pFileName, "Breadth path:");
+            Helpers.writeOneRow(pFileName, "Breadth path:");
             System.out.println( "Breadth path:");
             int x = breadthStringPath(inputString, pFileName, option);
-            writeOneRow(pFileName, x + " steps\n");
+            Helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
-            writeOneRow(pFileName, "Depth path:");
+            Helpers.writeOneRow(pFileName, "Depth path:");
             System.out.println( "Depth path:");
             x = depthStringPath(inputString, pFileName, option);
-            writeOneRow(pFileName, x + " steps\n");
+            Helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
+            System.out.println("See " + pFileName + " for saved ranked paths");
         }
         else
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
-            writeOneRow(pFileName, "TIE for " + inputString + "! \n");
-            writeOneRow(pFileName, "Breadth path:");
+            Helpers.writeOneRow(pFileName, "TIE for " + inputString + "! \n");
+            Helpers.writeOneRow(pFileName, "Breadth path:");
             int x = breadthStringPath(inputString, pFileName, option);
-            writeOneRow(pFileName, x + " steps\n");
-            writeOneRow(pFileName, "Depth path:");
+            Helpers.writeOneRow(pFileName, x + " steps\n");
+            Helpers.writeOneRow(pFileName, "Depth path:");
             x = depthStringPath(inputString, pFileName, option);
-            writeOneRow(pFileName, x + " steps\n");
+            Helpers.writeOneRow(pFileName, x + " steps\n");
+            System.out.println("See " + pFileName + " for saved ranked paths");
         }
     }
 
