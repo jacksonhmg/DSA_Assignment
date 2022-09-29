@@ -1,32 +1,54 @@
-Breadth wins for JacksoN123 ! 
+Breadth wins for pIzZA hEY12 a1Z23 ! 
 
 Breadth path:
-CAPS  -> CAPS-a -> Z -> 123-a -> SPACE-a -> B -> H -> J
-J  -> N -> SPACE-a -> 123-a -> Z -> CAPS-a -> CAPS
+p  -> / -> . -> OK -> GLOBE -> CAPS
+CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> .(-u) -> /(-u) -> P -> O -> I
+I  -> K -> M -> SPACE(-u) -> 123(-u) -> Z -> CAPS(-u) -> CAPS
+CAPS  -> z
+z  -> CAPS
+CAPS  -> CAPS(-u) -> Z
+Z  -> S -> A
+A  -> CAPS(-u) -> Z -> 123(-u) -> SPACE(-u)
+SPACE(-u)  -> 123(-u) -> Z -> CAPS(-u) -> CAPS
+CAPS  -> z -> 123 -> SPACE -> b -> h
+h  -> b -> SPACE -> 123 -> z -> CAPS
+CAPS  -> CAPS(-u) -> A -> Q -> W -> E
+E  -> R -> T -> Y
+Y  -> 6(-u) -> 5(-u) -> 4(-u) -> 3(-u) -> 2(-u) -> 1(-u)
+1(-u)  -> 2(-u)
+2(-u)  -> W -> S -> Z -> 123(-u) -> SPACE(-u)
+SPACE(-u)  -> 123(-u) -> Z -> CAPS(-u) -> CAPS
 CAPS  -> a
-a  -> CAPS -> z -> x -> c
-c  -> f -> g -> h -> j -> k
-k  -> m -> SPACE -> 123 -> z -> s
-s  -> w -> 2 -> 1 -> BACK -> 0 -> 9 -> o
-o  -> p -> / -> . -> OK -> GLOBE -> CAPS
-CAPS  -> CAPS-a -> Z -> 123-a -> SPACE-a -> B -> N
-N  -> SPACE-a -> 123-a -> Z -> S -> W -> 2-a -> 1-a
-1-a  -> 2-a
-2-a  -> 3-a
-56 steps
+a  -> q -> 1
+1  -> q -> a -> CAPS
+CAPS  -> CAPS(-u) -> Z
+Z  -> S -> W -> 2(-u)
+2(-u)  -> 3(-u)
+80 steps
 
 Depth path:
-CAPS  -> CAPS-a -> Z -> 123-a -> SPACE-a -> B -> H -> J
-J  -> N -> SPACE-a -> 123-a -> Z -> CAPS-a -> CAPS
+p  -> / -> . -> OK -> GLOBE -> CAPS
+CAPS  -> CAPS(-u) -> Z -> 123(-u) -> SPACE(-u) -> B -> H -> J -> K -> I
+I  -> K -> M -> SPACE(-u) -> 123(-u) -> Z -> CAPS(-u) -> CAPS
+CAPS  -> z
+z  -> CAPS
+CAPS  -> CAPS(-u) -> Z
+Z  -> S -> A
+A  -> CAPS(-u) -> Z -> 123(-u) -> SPACE(-u)
+SPACE(-u)  -> 123(-u) -> Z -> CAPS(-u) -> CAPS
+CAPS  -> z -> 123 -> SPACE -> b -> h
+h  -> b -> SPACE -> 123 -> z -> CAPS
+CAPS  -> CAPS(-u) -> Z -> 123(-u) -> SPACE(-u) -> B -> H -> Y -> T -> R -> E
+E  -> D -> X -> 123(-u) -> GLOBE(-u) -> OK(-u) -> .(-u) -> ,(-u) -> L -> K -> J -> H -> Y
+Y  -> H -> B -> SPACE(-u) -> @(-u) -> OK(-u) -> .com(-u) -> www.(-u) -> -(-u) -> BACK(-u) -> 1(-u)
+1(-u)  -> 2(-u)
+2(-u)  -> W -> S -> Z -> 123(-u) -> SPACE(-u)
+SPACE(-u)  -> 123(-u) -> Z -> CAPS(-u) -> CAPS
 CAPS  -> a
-a  -> s -> d -> x -> c
-c  -> SPACE -> @ -> OK -> . -> / -> l -> k
-k  -> m -> SPACE -> 123 -> z -> s
-s  -> a -> CAPS -> GLOBE -> OK -> . -> , -> l -> o
-o  -> p -> / -> . -> OK -> GLOBE -> CAPS
-CAPS  -> CAPS-a -> Z -> 123-a -> SPACE-a -> B -> N
-N  -> J -> U -> Y -> T -> R -> E -> W -> Q -> 1-a
-1-a  -> 2-a
-2-a  -> 3-a
-61 steps
+a  -> q -> 1
+1  -> BACK -> - -> www. -> .com -> OK -> GLOBE -> CAPS
+CAPS  -> CAPS(-u) -> Z
+Z  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> .(-u) -> ,(-u) -> L -> K -> J -> H -> G -> F -> R -> E -> 3(-u) -> 2(-u)
+2(-u)  -> 3(-u)
+115 steps
 

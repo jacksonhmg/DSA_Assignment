@@ -28,7 +28,7 @@ public class Helpers {
                 String label = (String)printV.getLabel();
                 /*if(label.length() > 2)
                 {
-                    if(label.substring(label.length()-2).equals("-a"))
+                    if(label.substring(label.length()-2).equals("(-u)"))
                     {
                         label = label.substring(0,label.length()-2);
                     }
@@ -72,7 +72,7 @@ public class Helpers {
             String label = (String)printV.getLabel();
             /*if(label.length() > 2)
             {
-                if(label.substring(label.length()-2).equals("-a"))
+                if(label.substring(label.length()-2).equals("(-u)"))
                 {
                     label = label.substring(0,label.length()-2);
                 }
@@ -164,14 +164,15 @@ public class Helpers {
                 count ++;
                 capsCheck = false;
             }
-            if(graph.hasVertex(strArr[i]+"-a") && capsCheck)
-            {
-                strArr[i] += "-a";
-            }
             if(strArr[i].equals(" "))
             {
                 strArr[i] = "SPACE";
             }
+            if(graph.hasVertex(strArr[i]+"(-u)") && capsCheck)
+            {
+                strArr[i] += "(-u)";
+            }
+            
             // if(strArr[i].length() < 2)
             // {
             //     strArr[i] = strArr[i].toLowerCase();
