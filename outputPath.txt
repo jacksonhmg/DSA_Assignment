@@ -1,0 +1,18 @@
+Breadth wins for aAX2 ! 
+
+Breadth path:
+1  -> q -> a
+a  -> s -> x -> CAPS
+CAPS  -> CAPS(-u) -> X -> S -> A
+A  -> S -> X
+X  -> CAPS(-u) -> 2(-u)
+13 steps
+
+Depth path:
+1  -> q -> a
+a  -> z -> GLOBE -> CAPS
+CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> Q -> A
+A  -> S -> X
+X  -> CAPS(-u) -> 2(-u)
+15 steps
+

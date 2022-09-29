@@ -286,7 +286,7 @@ public class DSAGraph{
     public int breadthStringPath(String string, String pFileName, int option)
     { 
         int count = 0;
-        String[] strArr = Helpers.stringFix(string, this);
+        String[] strArr = Helpers.stringFix2(string, this);
         for(int i = 0; i < strArr.length-1; i++)
         {
             count += breadthFirstSearchFind(strArr[i], strArr[i+1], pFileName, option);
@@ -306,7 +306,7 @@ public class DSAGraph{
             v.clearVisited();
         }
         DSAGraphVertex v = getVertex(source);
-        System.out.println(v.getLabel());
+        //System.out.println(v.getLabel());
         //System.out.println("\n" + v.getLabel());
         v.setVisited();
         S.push(v);
@@ -377,10 +377,184 @@ public class DSAGraph{
         return list.length() -1;
     }
 
+
+
+
+
+    public int breadthFirstSearchFindCAPSCHECK(Object source, Object dest, boolean capCheck)
+    {
+
+        DSAQueue T = new DSAQueue();
+        DSAQueue Q = new DSAQueue();
+        Iterator clearILL = vertices.iterator();
+        while(clearILL.hasNext())
+        {
+            DSAGraphVertex v = (DSAGraphVertex)clearILL.next();
+            v.clearVisited();
+        }
+        DSAGraphVertex v = getVertex(source);
+        System.out.print(v.getLabel());
+        v.setVisited();
+        Q.enqueue(v);
+
+        while(!(Q.isEmpty()))
+        {
+            v = (DSAGraphVertex)Q.dequeue();
+            Iterator ill = (v.getAdjacent()).iterator();
+            while(ill.hasNext())
+            {
+                DSAGraphVertex w = (DSAGraphVertex)ill.next();
+                if(!(w.getVisited()))
+                {
+                    T.enqueue(v);
+                    T.enqueue(w);
+                    w.setVisited();
+                    Q.enqueue(w);
+                }
+                if(w.getLabel().equals(dest))
+                {
+                    return shortestPathBreadthCAPSCHECK(T, getVertex(dest), getVertex(source), capCheck);
+                }
+            }
+        }
+        return 0;
+    }
+
+    public int shortestPathBreadthCAPSCHECK(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, boolean capCheck)
+    {
+        DSALinkedList list = new DSALinkedList();
+        int capsCheck = 0;
+        DSAGraphVertex w = new DSAGraphVertex(null, null);
+        list.insertLast(dest);
+        DSAGraphVertex v = dest;
+        do{
+            boolean stop = false;
+            Iterator ill = queue.iterator();
+            while(ill.hasNext() && !stop)
+            {
+                w = (DSAGraphVertex)ill.next();
+                if(isAdjacent(w.getLabel(), v.getLabel()))
+                {
+                    list.insertFirst(w);
+                    if(!capCheck)
+                    {
+                        if(w.getLabel().equals("CAPS(-u)")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
+                        {
+                            capsCheck = 1;
+                        }
+                    }
+                    else if(capCheck)
+                    {
+                        if(w.getLabel().equals("CAPS")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
+                        {
+                            capsCheck = 1;
+                        }
+                    }
+                    stop = true;
+                }
+            }
+            v = w;
+        } while(!((v.getLabel()).equals(source.getLabel())));
+        return capsCheck;
+    }
+
+
+
+    public int depthFirstSearchFindCAPSCHECK(Object source, Object dest, boolean capCheck)
+    {
+        int count = 0;
+        DSAQueue T = new DSAQueue();
+        DSAStack S = new DSAStack();
+        Iterator clearILL = vertices.iterator();
+        while(clearILL.hasNext())
+        {
+            DSAGraphVertex v = (DSAGraphVertex)clearILL.next();
+            v.clearVisited();
+        }
+        DSAGraphVertex v = getVertex(source);
+        //System.out.println(v.getLabel());
+        //System.out.println("\n" + v.getLabel());
+        v.setVisited();
+        S.push(v);
+        T.enqueue(v);
+        while(!(S.isEmpty()))
+        {
+            Iterator ill = (v.getAdjacent()).iterator();
+            while(ill.hasNext())
+            {
+                DSAGraphVertex w = (DSAGraphVertex)ill.next();
+                if(!(w.getVisited()))
+                {
+                    T.enqueue(v);
+                    T.enqueue(w);
+                    w.setVisited();
+                    S.push(w);
+                }
+                if(w.getLabel().equals(dest))
+                {
+                    return shortestPathDepthCAPSCHECK(T, getVertex(dest), getVertex(source), capCheck);
+                }
+            }
+            v = (DSAGraphVertex)S.pop();
+            
+        }
+        return 0;
+    }
+
+
+    public int shortestPathDepthCAPSCHECK(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, boolean capCheck)
+    {
+        DSALinkedList list = new DSALinkedList();
+        int capsCheck = 0;
+        DSAGraphVertex w = new DSAGraphVertex(null, null);
+        list.insertLast(dest);
+        DSAGraphVertex v = dest;
+        do{
+            boolean stop = false;
+            Iterator ill = queue.iterator();
+            while(ill.hasNext() && !stop)
+            {
+                w = (DSAGraphVertex)ill.next();
+                if(isAdjacent(w.getLabel(), v.getLabel()))
+                {
+                    list.insertFirst(w);
+                    if(!capCheck)
+                    {
+                        if(w.getLabel().equals("CAPS(-u)")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
+                        {
+                            capsCheck = 1;
+                        }
+                    }
+                    else if(capCheck)
+                    {
+                        if(w.getLabel().equals("CAPS")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
+                        {
+                            capsCheck = 1;
+                        }
+                    }
+                    stop = true;
+                }
+            }
+            v = w;
+        } while(!((v.getLabel()).equals(source.getLabel())));
+        return capsCheck;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     public int depthStringPath(String string, String pFileName, int option)
     {
         int count = 0;
-        String[] strArr = Helpers.stringFix(string, this);
+        String[] strArr = Helpers.stringFix2(string, this);
         for(int i = 0; i < strArr.length-1; i++)
         {
             count += depthFirstSearchFind(strArr[i], strArr[i+1], pFileName, option);
@@ -430,13 +604,18 @@ public class DSAGraph{
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
-            Helpers.writeOneRow(pFileName, "TIE for " + inputString + "! \n");
+            Helpers.writeOneRow(pFileName, "TIE for " + inputString + " ! \n");
+            System.out.println("Breadth wins for " + inputString + " ! \n");
             Helpers.writeOneRow(pFileName, "Breadth path:");
+            System.out.println( "Breadth path:");
             int x = breadthStringPath(inputString, pFileName, option);
             Helpers.writeOneRow(pFileName, x + " steps\n");
+            System.out.println(x + " steps\n");
             Helpers.writeOneRow(pFileName, "Depth path:");
+            System.out.println( "Depth path:");
             x = depthStringPath(inputString, pFileName, option);
             Helpers.writeOneRow(pFileName, x + " steps\n");
+            System.out.println(x + " steps\n");
             System.out.println("See " + pFileName + " for saved ranked paths");
         }
     }

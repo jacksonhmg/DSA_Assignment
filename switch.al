@@ -50,8 +50,12 @@ CAPS GLOBE x #+= 2
 #+= CAPS c SPACE 3
 SPACE #+= m OK 7
 
+CAPS CAPS(-u)
+CAPS(-u) CAPS
+
+
 1(-u) 2(-u) Q BACK(-u) GLOBE(-u)
-2(-u) 1(-u) 3(-u) W CAPS
+2(-u) 1(-u) 3(-u) W CAPS(-u)
 3(-u) 2(-u) 4(-u) E #+=(-u)
 4(-u) 3(-u) 5(-u) R -dSPACE(-u)
 5(-u) 4(-u) 6(-u) T -dSPACE(-u)
@@ -60,7 +64,7 @@ SPACE #+= m OK 7
 8(-u) 7(-u) 9(-u) I -dSPACE(-u)
 9(-u) 8(-u) 0(-u) O -dSPACE(-u)
 0(-u) 9(-u) @(-u) P -dSPACE(-u)
-@(-u) 0(-u) BACK(-u) =(-u) 9(-u) -dSPACE(-u)
+@(-u) 0(-u) BACK(-u) = 9(-u) -dSPACE(-u)
 BACK(-u) @(-u) RETURN(-u) OK(-u) 1(-u)
 Q 1(-u) W A RETURN(-u)
 W Q 2(-u) E S
@@ -71,9 +75,9 @@ Y T 6(-u) U H
 U Y 7(-u) I J
 I U 8(-u) O K
 O I 9(-u) P L
-P O 0(-u) =(-u) &(-u)
-=(-u) P @(-u) RETURN(-u) ;(-u)
-RETURN(-u) =(-u) BACK(-u) OK(-u) Q
+P O 0(-u) = &
+= P @(-u) RETURN(-u) ;
+RETURN(-u) = BACK(-u) OK(-u) Q
 A Q S Z -dRETURN(-u)
 S A W D X
 D S E F C
@@ -81,25 +85,25 @@ F D R G V
 G F T H B
 H G Y J N
 J H U K M
-K J I L *(-u)
-L K O &(-u) #(-u)
-&(-u) L P ;(-u) !(-u)
-;(-u) &(-u) =(-u) -dRETURN(-u) ?(-u)
+K J I L *
+L K O & #
+& L P ; !
+; & = -dRETURN(-u) ?
 Z A X GLOBE(-u) -dOK(-u)
-X Z S C CAPS
+X Z S C CAPS(-u)
 C X D V #+=(-u)
 V C F B -dSPACE(-u)
 B V G N -dSPACE(-u)
 N B H M -dSPACE(-u)
 M N J ,(-u) SPACE(-u)
-*(-u) M K #(-u) -dSPACE(-u)
-#(-u) *(-u) L !(-u) -dSPACE(-u)
-!(-u) #(-u) &(-u) ?(-u) -dSPACE(-u)
-?(-u) !(-u) ;(-u) -dOK(-u) -dSPACE(-u)
+* M K # -dSPACE(-u)
+# * L ! -dSPACE(-u)
+! # & ? -dSPACE(-u)
+? ! ; -dOK(-u) -dSPACE(-u)
 OK(-u) SPACE(-u) RETURN(-u) BACK(-u) GLOBE(-u)
-GLOBE(-u) Z CAPS OK(-u) 1(-u)
-CAPS GLOBE(-u) X #+=(-u) 2(-u)
-#+=(-u) CAPS C SPACE(-u) 3(-u)
+GLOBE(-u) Z CAPS(-u) OK(-u) 1(-u)
+CAPS(-u) GLOBE(-u) X #+=(-u) 2(-u)
+#+=(-u) CAPS(-u) C SPACE(-u) 3(-u)
 SPACE(-u) #+=(-u) M OK(-u) 7(-u)
 
 

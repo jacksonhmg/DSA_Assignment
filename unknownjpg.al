@@ -48,6 +48,9 @@ GLOBE CAPS 123 OK 1
 @ SPACE , OK 9
 OK @ . .com 0
 
+CAPS CAPS(-u)
+CAPS(-u) CAPS
+
 1(-u) 2(-u) Q BACK(-u) GLOBE(-u)
 2(-u) 1(-u) 3(-u) W 123(-u)
 3(-u) 2(-u) 4(-u) E 123(-u)
@@ -69,7 +72,7 @@ I U O K 8(-u)
 O I P L 9(-u)
 P O -(-u) /(-u) 0(-u)
 -(-u) P www.(-u) BACK(-u) Q
-A CAPS S Q www.(-u)
+A CAPS(-u) S Q www.(-u)
 S A D Z W
 D S F X E
 F D G C R
@@ -80,8 +83,8 @@ K J L M I
 L K /(-u) ,(-u) O
 /(-u) L www.(-u) .(-u) P
 www.(-u) /(-u) -(-u) .com(-u) A
-CAPS Z A .com(-u) GLOBE(-u)
-Z CAPS X S 123(-u)
+CAPS(-u) Z A .com(-u) GLOBE(-u)
+Z CAPS(-u) X S 123(-u)
 X Z C D 123(-u)
 C X V F -dSPACE(-u) 
 V C B G -dSPACE(-u)
@@ -90,10 +93,10 @@ N B M J -dSPACE(-u)
 M N ,(-u) K -dSPACE(-u)
 ,(-u) M .(-u) L @(-u)
 .(-u) ,(-u) .com(-u) /(-u) OK(-u)
-.com(-u) .(-u) www.(-u) OK(-u) CAPS
+.com(-u) .(-u) www.(-u) OK(-u) CAPS(-u)
 SPACE(-u) B @(-u) 123(-u) 6(-u)
 BACK(-u) 0(-u) -(-u) 1(-u) -dOK(-u)
-GLOBE(-u) CAPS 123(-u) OK(-u) 1(-u)
+GLOBE(-u) CAPS(-u) 123(-u) OK(-u) 1(-u)
 123(-u) GLOBE(-u) Z X SPACE(-u)
 @(-u) SPACE(-u) ,(-u) OK(-u) 9(-u)
 OK(-u) @(-u) .(-u) .com(-u) 0(-u)

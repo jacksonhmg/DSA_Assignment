@@ -201,34 +201,87 @@ public class Helpers {
 
 
 
-    /*public static String[] stringFix2(String string, DSAGraph graph)
+    public static String[] stringFix2(String string, DSAGraph graph)
     {
         int count = 0;
         boolean capsCheck = false;
         String[] strArr = string.split("");
-        for(int i = 0; i < strArr.length; i++)
+        boolean capCheck = false;
+        String[] strArr3 = new String[strArr.length+1];
+        for(int k = 0; k < strArr.length+1; k++)
         {
-            if(strArr[i].equals(" "))
+            
+            if(k==0)
             {
-                strArr[i] = "SPACE";
+                strArr3[k] = "1";
             }
-            if(graph.hasVertex(strArr[i]+"(-u)") && capsCheck)
+            else
             {
-                strArr[i] += "(-u)";
+                strArr3[k] = strArr[k-1];
             }
+        }
+        strArr = strArr3;
 
+        for(int i = 0; i < strArr.length-1; i++)
+        {
+            if(strArr[i+1].equals(" "))
+            {
+                strArr[i+1] = "SPACE";
+            }
+            System.out.print(capCheck);
+            if(graph.hasVertex(strArr[i+1]+"(-u)") && capCheck)
+            {
+                strArr[i+1] += "(-u)";
+            }
+            if(capsCrosser(strArr[i],strArr[i+1],graph, capCheck) == 1)
+            {
+                String[] strArr2 = new String[strArr.length+1];
+                for(int j = 0; j < strArr2.length; j++)
+                {
+                    if(j<=i)
+                    {
+                        strArr2[j] = strArr[j];
+                    }
+                    if(j==i+1)
+                    {
+                        strArr2[j] = "CAPS";
+                    }
+                    if(j>i+1)
+                    {
+                        strArr2[j] = strArr[j-1];
+                    }
+                }
+                strArr = strArr2;
+                i++;
+                capCheck = !capCheck;
+            }
+            
             if(i == strArr.length - 1)
             {
                 break;
             }
-            
+        }
+        for(int i = 0; i < strArr.length; i++)
+        {
+            System.out.print(strArr[i] + ".");
         }
         return strArr;
-    }*/
+    }
 
 
 
-
+    public static int capsCrosser(String source, String dest, DSAGraph graph, boolean capCheck)
+    {
+        //System.out.println(graph.hasVertex("1"));
+        if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 1 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 1)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
 
 
