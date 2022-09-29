@@ -306,6 +306,7 @@ public class DSAGraph{
             v.clearVisited();
         }
         DSAGraphVertex v = getVertex(source);
+        System.out.println(v.getLabel());
         //System.out.println("\n" + v.getLabel());
         v.setVisited();
         S.push(v);

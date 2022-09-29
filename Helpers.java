@@ -106,11 +106,11 @@ public class Helpers {
     public static String[] stringFix(String string, DSAGraph graph)
     {
         int count = 0;
-        boolean capsCheck = false;
+        boolean capsCheck = false; /* placed outside of loop so that loop can keep track of if CAPS LOCK is on */
         String[] strArr = string.split("");
         for(int i = 0; i < strArr.length; i++)
         {
-            if(Character.isUpperCase(strArr[i].charAt(0)) && !capsCheck)
+            if((Character.isUpperCase(strArr[i].charAt(0)) || (strArr[i].length() > 1 && (graph.hasVertex(strArr[i]+"(-u)")) && (!graph.hasVertex(strArr[i])))) && !capsCheck)
             {
                 String[] strArr2 = new String[strArr.length + 1];
                 for(int j = 0; j < strArr2.length; j++)
@@ -137,7 +137,7 @@ public class Helpers {
                 count ++;
                 capsCheck = true;
             }
-            if(Character.isLowerCase(strArr[i].charAt(0)) && capsCheck)
+            else if((Character.isLowerCase(strArr[i].charAt(0)) || (strArr[i].length() > 1 && (graph.hasVertex(strArr[i])) && !(graph.hasVertex(strArr[i]+"(-u)")))) && capsCheck)
             {
                 String[] strArr2 = new String[strArr.length + 1];
                 for(int j = 0; j < strArr2.length; j++)
@@ -173,6 +173,8 @@ public class Helpers {
                 strArr[i] += "(-u)";
             }
             
+            
+
             // if(strArr[i].length() < 2)
             // {
             //     strArr[i] = strArr[i].toLowerCase();
@@ -188,8 +190,47 @@ public class Helpers {
             }
             
         }
+        for(int i = 0; i < strArr.length; i++)
+        {
+            System.out.print(strArr[i] + " ");
+        }
         return strArr;
     }
+
+
+
+
+
+    /*public static String[] stringFix2(String string, DSAGraph graph)
+    {
+        int count = 0;
+        boolean capsCheck = false;
+        String[] strArr = string.split("");
+        for(int i = 0; i < strArr.length; i++)
+        {
+            if(strArr[i].equals(" "))
+            {
+                strArr[i] = "SPACE";
+            }
+            if(graph.hasVertex(strArr[i]+"(-u)") && capsCheck)
+            {
+                strArr[i] += "(-u)";
+            }
+
+            if(i == strArr.length - 1)
+            {
+                break;
+            }
+            
+        }
+        return strArr;
+    }*/
+
+
+
+
+
+
 
     public static String[] processLine(String csvRow)
     {  //reading one row of a file at a time, separated by string.split method
