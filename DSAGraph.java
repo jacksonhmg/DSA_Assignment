@@ -381,7 +381,7 @@ public class DSAGraph{
 
 
 
-    public int breadthFirstSearchFindCAPSCHECK(Object source, Object dest, boolean capCheck)
+    public int breadthFirstSearchFindCAPSCHECK(Object source, Object dest, boolean capCheck, boolean numCheck)
     {
 
         DSAQueue T = new DSAQueue();
@@ -413,17 +413,17 @@ public class DSAGraph{
                 }
                 if(w.getLabel().equals(dest))
                 {
-                    return shortestPathBreadthCAPSCHECK(T, getVertex(dest), getVertex(source), capCheck);
+                    return shortestPathBreadthCAPSCHECK(T, getVertex(dest), getVertex(source), capCheck, numCheck);
                 }
             }
         }
         return 0;
     }
 
-    public int shortestPathBreadthCAPSCHECK(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, boolean capCheck)
+    public int shortestPathBreadthCAPSCHECK(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, boolean capCheck, boolean numCheck)
     {
         DSALinkedList list = new DSALinkedList();
-        int capsCheck = 0;
+        int crossCheck = 0;
         DSAGraphVertex w = new DSAGraphVertex(null, null);
         list.insertLast(dest);
         DSAGraphVertex v = dest;
@@ -436,18 +436,39 @@ public class DSAGraph{
                 if(isAdjacent(w.getLabel(), v.getLabel()))
                 {
                     list.insertFirst(w);
+                    if(!numCheck && !capCheck)
+                    {
+                        if(w.getLabel().equals("ABC"))
+                        {
+                            crossCheck = 3;
+                        }
+                    }
+                    if(!numCheck && capCheck)
+                    {
+                        if(w.getLabel().equals("ABC"))
+                        {
+                            crossCheck = 4;
+                        }
+                    }
+                    if(numCheck)
+                    {
+                        if(w.getLabel().equals("#+="))
+                        {
+                            crossCheck = 5;
+                        }
+                    }
                     if(!capCheck)
                     {
                         if(w.getLabel().equals("CAPS(-u)")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
                         {
-                            capsCheck = 1;
+                            crossCheck = 1;
                         }
                     }
                     else if(capCheck)
                     {
                         if(w.getLabel().equals("CAPS")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
                         {
-                            capsCheck = 2;
+                            crossCheck = 2;
                         }
                     }
                     stop = true;
@@ -455,12 +476,12 @@ public class DSAGraph{
             }
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
-        return capsCheck;
+        return crossCheck;
     }
 
 
 
-    public int depthFirstSearchFindCAPSCHECK(Object source, Object dest, boolean capCheck)
+    public int depthFirstSearchFindCAPSCHECK(Object source, Object dest, boolean capCheck, boolean numCheck)
     {
         int count = 0;
         DSAQueue T = new DSAQueue();
@@ -492,7 +513,7 @@ public class DSAGraph{
                 }
                 if(w.getLabel().equals(dest))
                 {
-                    return shortestPathDepthCAPSCHECK(T, getVertex(dest), getVertex(source), capCheck);
+                    return shortestPathDepthCAPSCHECK(T, getVertex(dest), getVertex(source), capCheck, numCheck);
                 }
             }
             v = (DSAGraphVertex)S.pop();
@@ -502,10 +523,10 @@ public class DSAGraph{
     }
 
 
-    public int shortestPathDepthCAPSCHECK(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, boolean capCheck)
+    public int shortestPathDepthCAPSCHECK(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, boolean capCheck, boolean numCheck)
     {
         DSALinkedList list = new DSALinkedList();
-        int capsCheck = 0;
+        int crossCheck = 0;
         DSAGraphVertex w = new DSAGraphVertex(null, null);
         list.insertLast(dest);
         DSAGraphVertex v = dest;
@@ -518,18 +539,39 @@ public class DSAGraph{
                 if(isAdjacent(w.getLabel(), v.getLabel()))
                 {
                     list.insertFirst(w);
+                    if(!numCheck && !capCheck)
+                    {
+                        if(w.getLabel().equals("ABC"))
+                        {
+                            crossCheck = 3;
+                        }
+                    }
+                    if(!numCheck && capCheck)
+                    {
+                        if(w.getLabel().equals("ABC"))
+                        {
+                            crossCheck = 4;
+                        }
+                    }
+                    if(numCheck)
+                    {
+                        if(w.getLabel().equals("#+="))
+                        {
+                            crossCheck = 5;
+                        }
+                    }
                     if(!capCheck)
                     {
                         if(w.getLabel().equals("CAPS(-u)")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
                         {
-                            capsCheck = 1;
+                            crossCheck = 1;
                         }
                     }
                     else if(capCheck)
                     {
                         if(w.getLabel().equals("CAPS")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
                         {
-                            capsCheck = 2;
+                            crossCheck = 2;
                         }
                     }
                     stop = true;
@@ -537,7 +579,7 @@ public class DSAGraph{
             }
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
-        return capsCheck;
+        return crossCheck;
     }
 
 

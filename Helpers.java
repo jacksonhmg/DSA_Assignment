@@ -207,6 +207,7 @@ public class Helpers {
         boolean capsCheck = false;
         String[] strArr = string.split("");
         boolean capCheck = false;
+        boolean numCheck = false;
         String[] strArr3 = new String[strArr.length+1];
         for(int k = 0; k < strArr.length+1; k++)
         {
@@ -233,8 +234,12 @@ public class Helpers {
             {
                 strArr[i+1] += "(-u)";
             }
-            int check = capsCrosser(strArr[i],strArr[i+1],graph, capCheck);
-            if( check != 0)
+            if(graph.hasVertex(strArr[i+1]+"(-p)") && numCheck)
+            {
+                strArr[i+1] += "(-p)";
+            }
+            int check = capsCrosser(strArr[i],strArr[i+1], graph, capCheck, numCheck);
+            if(check != 0)
             {
                 String[] strArr2 = new String[strArr.length+1];
                 for(int j = 0; j < strArr2.length; j++)
@@ -248,10 +253,29 @@ public class Helpers {
                         if(check == 1)
                         {
                             strArr2[j] = "CAPS";
+                            capCheck = !capCheck;
                         }
                         else if(check == 2)
                         {
                             strArr2[j] = "CAPS(-u)"; 
+                            capCheck = !capCheck;
+                        }
+                        else if(check == 3)
+                        {
+                            strArr2[j] = "#+=";
+                            numCheck = true;
+                            capCheck = false;
+                        }
+                        else if(check == 4)
+                        {
+                            strArr2[j] = "#+=(-u)";
+                            numCheck = true; 
+                            capCheck = false;
+                        }
+                        else if(check == 5)
+                        {
+                            strArr2[j] = "ABC";
+                            numCheck = false;
                         }
                     }
                     if(j>i+1)
@@ -261,7 +285,7 @@ public class Helpers {
                 }
                 strArr = strArr2;
                 i++;
-                capCheck = !capCheck;
+                
             }
             
             if(i == strArr.length - 1)
@@ -278,16 +302,28 @@ public class Helpers {
 
 
 
-    public static int capsCrosser(String source, String dest, DSAGraph graph, boolean capCheck)
+    public static int capsCrosser(String source, String dest, DSAGraph graph, boolean capCheck, boolean numCheck)
     {
         //System.out.println(graph.hasVertex("1"));
-        if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 1 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 1)
+        if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 1 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 1)
         {
             return 1;
         }
-        else if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 2 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 2)
+        else if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 2 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 2)
         {
             return 2;
+        }
+        else if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 3 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 3)
+        {
+            return 3;
+        }
+        else if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 4 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 4)
+        {
+            return 4;
+        }
+        else if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 5 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 5)
+        {
+            return 5;
         }
         else
         {

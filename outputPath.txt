@@ -1,30 +1,46 @@
-Breadth wins for aAX2a!: ! 
+Breadth wins for t1 ?&G $&^*1 Aa ! 
 
 Breadth path:
-1  -> q -> a
-a  -> s -> x -> CAPS
-CAPS  -> CAPS(-u) -> X -> S -> A
-A  -> S -> X
-X  -> CAPS(-u) -> 2(-u)
-2(-u)  -> CAPS(-u)
-CAPS(-u)  -> CAPS -> x -> s -> a
-a  -> s -> x -> CAPS
-CAPS  -> CAPS(-u) -> #+=(-u) -> SPACE(-u) -> M -> * -> # -> !
-!  -> SPACE(-u) -> #+=(-u) -> CAPS(-u)
-CAPS(-u)  -> CAPS -> GLOBE -> OK -> RETURN -> + -> :
-37 steps
+1  -> 2 -> 3 -> 4 -> 5 -> t
+t  -> 5 -> 4 -> 3 -> 2 -> 1
+1  -> BACK -> @ -> SPACE
+SPACE  -> #+= -> CAPS
+CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> = -> ; -> ?
+?  -> ; -> &
+&  -> L -> K -> J -> H -> G
+G  -> B -> SPACE(-u)
+SPACE(-u)  -> #+=(-u)
+#+=(-u)  -> ABC -> 3(-p) -> 4(-p) -> $
+$  -> % -> ^ -> &(-p)
+&(-p)  -> ^
+^  -> &(-p) -> *(-p)
+*(-p)  -> 8(-p) -> SPACE(-p) -> OK(-p) -> BACK(-p) -> 1(-p)
+1(-p)  -> BACK(-p) -> -(-p) -> SPACE(-p)
+SPACE(-p)  -> ABC
+ABC  -> #+= -> CAPS -> CAPS(-u) -> X -> S -> A
+A  -> S -> X -> CAPS(-u) -> CAPS
+CAPS  -> x -> s -> a
+64 steps
 
 Depth path:
-1  -> q -> a
-a  -> z -> GLOBE -> CAPS
-CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> Q -> A
-A  -> S -> X
-X  -> CAPS(-u) -> 2(-u)
-2(-u)  -> CAPS(-u)
-CAPS(-u)  -> CAPS -> GLOBE -> z -> a
-a  -> z -> GLOBE -> CAPS
-CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> = -> P -> & -> !
-!  -> SPACE(-u) -> #+=(-u) -> CAPS(-u)
-CAPS(-u)  -> CAPS -> #+= -> SPACE -> m -> j -> k -> l -> _ -> :
-43 steps
+1  -> BACK -> OK -> SPACE -> 7 -> u -> y -> t
+t  -> 5 -> SPACE -> #+= -> 3 -> 2 -> 1
+1  -> BACK -> OK -> SPACE
+SPACE  -> #+= -> CAPS
+CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> = -> ; -> ?
+?  -> ; -> &
+&  -> ! -> SPACE(-u) -> M -> J -> H -> G
+G  -> B -> SPACE(-u)
+SPACE(-u)  -> #+=(-u)
+#+=(-u)  -> ABC -> SPACE(-p) -> ,(-p) -> } -> { -> +(-p) -> \ -> $
+$  -> 4(-p) -> SPACE(-p) -> 7(-p) -> &(-p)
+&(-p)  -> ^
+^  -> &(-p) -> *(-p)
+*(-p)  -> 8(-p) -> SPACE(-p) -> ABC -> GLOBE(-p) -> 1(-p)
+1(-p)  -> BACK(-p) -> OK(-p) -> SPACE(-p)
+SPACE(-p)  -> ABC
+ABC  -> #+= -> CAPS -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> Q -> A
+A  -> Z -> GLOBE(-u) -> CAPS(-u) -> CAPS
+CAPS  -> GLOBE -> OK -> RETURN -> q -> a
+77 steps
 

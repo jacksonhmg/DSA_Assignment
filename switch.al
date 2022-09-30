@@ -110,4 +110,51 @@ ABC #+=
 #+= ABC
 #+=(-u) -dABC
 
-
+1(-p) 2(-p) !(-p) BACK(-p) GLOBE(-p)
+2(-p) 1(-p) 3(-p) @(-p) >
+3(-p) 2(-p) 4(-p) ABC #(-p)
+4(-p) 3(-p) 5(-p) -dSPACE(-p) $
+5(-p) 4(-p) 6(-p) -dSPACE(-p) %
+6(-p) 5(-p) 7(-p) -dSPACE(-p) ^
+7(-p) 6(-p) 8(-p) SPACE(-p) &(-p)
+8(-p) 7(-p) 9(-p) -dSPACE(-p) *(-p)
+9(-p) 8(-p) 0(-p) -dSPACE(-p) (
+0(-p) 9(-p) -(-p) -dSPACE(-p) )
+-(-p) 0(-p) BACK(-p) -dSPACE(-p) _(-p)
+BACK(-p) -(-p) 1(-p) RETURN(-p) OK(-p)
+!(-p) RETURN(-p) 1(-p) @(-p) ~
+@(-p) !(-p) 2(-p) #(-p) `
+#(-p) @(-p) 3(-p) $ =(-p)
+$ #(-p) 4(-p) % \
+% $ 5(-p) ^ +(-p)
+^ % 6(-p) &(-p) {
+&(-p) ^ 7(-p) *(-p) }
+*(-p) &(-p) 8(-p) ( |
+( *(-p) 9(-p) ) [
+) ( 0(-p) _(-p) ]
+_(-p) ) -(-p) RETURN(-p) -dSPACE(-p)
+RETURN(-p) _(-p) BACK(-p) OK(-p) !(-p)
+~ -dRETURN(-p) !(-p) `(-p) <
+` ~ @(-p) =(-p) >
+=(-p) ` #(-p) \ ;(-p)
+\ =(-p) $ +(-p) :(-p)
++(-p) \ % { "
+{ +(-p) ^ } '
+} { &(-p) | ,(-p)
+| } *(-p) [ .(-p)
+[ | ( ] ?(-p)
+] [ ) /(-p) -dRETURN(-p)
+< -dOK(-p) ~ > GLOBE(-p)
+> < ` ;(-p) 2
+;(-p) > =(-p) :(-p) ABC
+:(-p) ;(-p) \ " -dSPACE(-p)
+" :(-p) +(-p) '(-p) -dSPACE(-p)
+' " { ,(-p) -dSPACE(-p)
+,(-p) ' } .(-p) SPACE(-p)
+.(-p) ,(-p) | ?(-p) -dSPACE(-p)
+?(-p) .(-p) [ /(-p) -dSPACE(-p)
+/(-p) ?(-p) ] OK(-p) -dSPACE(-p)
+OK(-p) /(-p) RETURN(-p) SPACE(-p) BACK(-p)
+GLOBE(-p) -dOK(-p) < ABC 1(-p)
+ABC GLOBE(-p) ;(-p) SPACE(-p) 3(-p)
+SPACE(-p) ABC ,(-p) OK(-p) 7(-p)
