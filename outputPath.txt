@@ -17,10 +17,12 @@ $  -> % -> ^ -> &(-p)
 *(-p)  -> 8(-p) -> SPACE(-p) -> OK(-p) -> BACK(-p) -> 1(-p)
 1(-p)  -> BACK(-p) -> -(-p) -> SPACE(-p)
 SPACE(-p)  -> ABC
-ABC  -> #+= -> CAPS -> CAPS(-u) -> X -> S -> A
-A  -> S -> X -> CAPS(-u) -> CAPS
-CAPS  -> x -> s -> a
-64 steps
+ABC  -> #+= -> CAPS
+CAPS  -> 2 -> CAPS
+CAPS  -> CAPS(-u) -> X -> S -> A
+A  -> S -> X -> CAPS(-u)
+CAPS(-u)  -> CAPS -> x -> s -> a
+66 steps
 
 Depth path:
 1  -> BACK -> OK -> SPACE -> 7 -> u -> y -> t
@@ -39,8 +41,10 @@ $  -> 4(-p) -> SPACE(-p) -> 7(-p) -> &(-p)
 *(-p)  -> 8(-p) -> SPACE(-p) -> ABC -> GLOBE(-p) -> 1(-p)
 1(-p)  -> BACK(-p) -> OK(-p) -> SPACE(-p)
 SPACE(-p)  -> ABC
-ABC  -> #+= -> CAPS -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> Q -> A
-A  -> Z -> GLOBE(-u) -> CAPS(-u) -> CAPS
-CAPS  -> GLOBE -> OK -> RETURN -> q -> a
-77 steps
+ABC  -> #+= -> CAPS
+CAPS  -> 2 -> CAPS
+CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> Q -> A
+A  -> Z -> GLOBE(-u) -> CAPS(-u)
+CAPS(-u)  -> CAPS -> 2 -> 1 -> q -> a
+78 steps
 

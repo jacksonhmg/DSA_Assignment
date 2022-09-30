@@ -452,12 +452,17 @@ public class DSAGraph{
                     }
                     if(numCheck)
                     {
-                        if(w.getLabel().equals("#+="))
+                        if(w.getLabel().equals("#+=") && crossCheck != 6)
                         {
                             crossCheck = 5;
                         }
+                        if(w.getLabel().equals("CAPS(-u)")) /* have to address this scenario in case goes from punctuation to upper. therefore needs to pass through lower */
+                        {
+                            crossCheck = 6;
+                            System.out.println("WOAHHHHHHHHH\n\n");
+                        }
                     }
-                    if(!capCheck)
+                    else if(!capCheck)
                     {
                         if(w.getLabel().equals("CAPS(-u)")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
                         {
@@ -555,12 +560,17 @@ public class DSAGraph{
                     }
                     if(numCheck)
                     {
-                        if(w.getLabel().equals("#+="))
+                        if(w.getLabel().equals("#+=") && crossCheck != 6)
                         {
                             crossCheck = 5;
                         }
+                        if(w.getLabel().equals("CAPS(-u)")) /* have to address this scenario in case goes from punctuation to upper. therefore needs to pass through lower */
+                        {
+                            crossCheck = 6;
+                            System.out.println("WOAHHHHHHHHH\n\n");
+                        }
                     }
-                    if(!capCheck)
+                    else if(!capCheck)
                     {
                         if(w.getLabel().equals("CAPS(-u)")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
                         {

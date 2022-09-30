@@ -242,6 +242,10 @@ public class Helpers {
             if(check != 0)
             {
                 String[] strArr2 = new String[strArr.length+1];
+                if(check == 6)
+                {
+                    strArr2 = new String[strArr.length+2];
+                }
                 for(int j = 0; j < strArr2.length; j++)
                 {
                     if(j<=i)
@@ -272,15 +276,33 @@ public class Helpers {
                             numCheck = true; 
                             capCheck = false;
                         }
-                        else if(check == 5)
+                        else if(check == 5 || check == 6)
                         {
                             strArr2[j] = "ABC";
                             numCheck = false;
+                            /*if(check == 6)
+                            {
+                                capCheck = true;
+                            }*/
                         }
                     }
                     if(j>i+1)
                     {
-                        strArr2[j] = strArr[j-1];
+                        if(check != 6)
+                        {
+                            strArr2[j] = strArr[j-1];
+                        }
+                        if(check == 6)
+                        {
+                            if(j==i+2)
+                            {
+                                strArr2[j] = "CAPS";
+                            }
+                            else if(j>i+2)
+                            {
+                                strArr2[j] = strArr[j-2];
+                            }
+                        }
                     }
                 }
                 strArr = strArr2;
@@ -324,6 +346,10 @@ public class Helpers {
         else if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 5 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 5)
         {
             return 5;
+        }
+        else if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 6 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 6)
+        {
+            return 6;
         }
         else
         {
