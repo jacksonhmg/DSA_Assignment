@@ -233,7 +233,8 @@ public class Helpers {
             {
                 strArr[i+1] += "(-u)";
             }
-            if(capsCrosser(strArr[i],strArr[i+1],graph, capCheck) == 1)
+            int check = capsCrosser(strArr[i],strArr[i+1],graph, capCheck);
+            if( check != 0)
             {
                 String[] strArr2 = new String[strArr.length+1];
                 for(int j = 0; j < strArr2.length; j++)
@@ -244,7 +245,14 @@ public class Helpers {
                     }
                     if(j==i+1)
                     {
-                        strArr2[j] = "CAPS";
+                        if(check == 1)
+                        {
+                            strArr2[j] = "CAPS";
+                        }
+                        else if(check == 2)
+                        {
+                            strArr2[j] = "CAPS(-u)"; 
+                        }
                     }
                     if(j>i+1)
                     {
@@ -276,6 +284,10 @@ public class Helpers {
         if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 1 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 1)
         {
             return 1;
+        }
+        else if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 2 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck) == 2)
+        {
+            return 2;
         }
         else
         {

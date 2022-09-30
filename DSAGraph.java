@@ -447,7 +447,7 @@ public class DSAGraph{
                     {
                         if(w.getLabel().equals("CAPS")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
                         {
-                            capsCheck = 1;
+                            capsCheck = 2;
                         }
                     }
                     stop = true;
@@ -529,7 +529,7 @@ public class DSAGraph{
                     {
                         if(w.getLabel().equals("CAPS")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
                         {
-                            capsCheck = 1;
+                            capsCheck = 2;
                         }
                     }
                     stop = true;

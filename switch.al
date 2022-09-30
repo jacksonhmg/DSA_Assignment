@@ -106,5 +106,8 @@ CAPS(-u) GLOBE(-u) X #+=(-u) 2(-u)
 #+=(-u) CAPS(-u) C SPACE(-u) 3(-u)
 SPACE(-u) #+=(-u) M OK(-u) 7(-u)
 
+ABC #+=
+#+= ABC
+#+=(-u) -dABC
 
 
