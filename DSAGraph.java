@@ -134,6 +134,58 @@ public class DSAGraph{
         return checker;
     }
 
+
+    public void deleteVertice(Object label)
+    {
+        DSALinkedList newVerticeList = new DSALinkedList();
+        Iterator ill = vertices.iterator();
+        while(ill.hasNext())
+        {
+            DSAGraphVertex v = (DSAGraphVertex)ill.next();
+            if(!(v.getLabel().equals(label)))
+            {
+                DSALinkedList newLinks = new DSALinkedList();
+                Iterator intraILL = v.getAdjacent().iterator();
+                while(intraILL.hasNext())
+                {
+                    DSAGraphVertex link = (DSAGraphVertex)intraILL.next();
+                    if(!(link.getLabel().equals(label)))
+                    {
+                        newLinks.insertLast(link);
+                    }
+                }
+                v.links = newLinks;
+                newVerticeList.insertLast(v);
+            }
+        }
+        vertices = newVerticeList;
+        
+        DSALinkedList newEdgeList = new DSALinkedList();
+        Iterator ill2 = edges.iterator();
+        while(ill2.hasNext())
+        {
+            DSAGraphEdge e = (DSAGraphEdge)ill2.next();
+            if(!(e.getFrom().equals(label)) && !(e.getTo().equals(label)))
+            {
+                newEdgeList.insertLast(e);
+            }
+        }
+        edges = newEdgeList;
+    }
+
+
+    public void deleteEdge(Object label1, Object label2)
+    {
+        DSAGraphVertex v1 = getVertex(label1);
+        DSAGraphVertex v2 = getVertex(label2);
+
+    }
+
+    public void updateNode(Object oldLabel, Object newLabel)
+    {
+        getVertex(oldLabel).setLabel(newLabel);
+    }
+
     public void displayAsList()
     {
         Iterator ill = vertices.iterator();
@@ -391,7 +443,7 @@ public class DSAGraph{
             v.clearVisited();
         }
         DSAGraphVertex v = getVertex(source);
-        System.out.print(v.getLabel());
+        /*System.out.print(v.getLabel());*/
         v.setVisited();
         Q.enqueue(v);
 
@@ -457,7 +509,7 @@ public class DSAGraph{
                         if(w.getLabel().equals("CAPS(-u)")) /* have to address this scenario in case goes from punctuation to upper. therefore needs to pass through lower */
                         {
                             crossCheck = 6;
-                            System.out.println("WOAHHHHHHHHH\n\n");
+                            /*System.out.println("WOAHHHHHHHHH\n\n");*/
                         }
                     }
                     else if(!capCheck)
@@ -564,7 +616,7 @@ public class DSAGraph{
                         if(w.getLabel().equals("CAPS(-u)")) /* have to address this scenario in case goes from punctuation to upper. therefore needs to pass through lower */
                         {
                             crossCheck = 6;
-                            System.out.println("WOAHHHHHHHHH\n\n");
+                            /*System.out.println("WOAHHHHHHHHH\n\n");*/
                         }
                     }
                     else if(!capCheck)

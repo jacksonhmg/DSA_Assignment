@@ -198,10 +198,10 @@ public class Helpers {
             }
             
         }
-        for(int i = 0; i < strArr.length; i++)
+        /*for(int i = 0; i < strArr.length; i++)
         {
             System.out.print(strArr[i] + " ");
-        }
+        }*/
         return strArr;
     }
 
@@ -237,7 +237,7 @@ public class Helpers {
             {
                 strArr[i+1] = "SPACE";
             }
-            System.out.print(capCheck);
+            /*System.out.print(capCheck);*/
             if(graph.hasVertex(strArr[i+1]+"(-u)") && capCheck)
             {
                 strArr[i+1] += "(-u)";
@@ -327,10 +327,10 @@ public class Helpers {
                 break;
             }
         }
-        for(int i = 0; i < strArr.length; i++)
+        /*for(int i = 0; i < strArr.length; i++)
         {
             System.out.print(strArr[i] + ".");
-        }
+        }*/
         return strArr;
     }
 

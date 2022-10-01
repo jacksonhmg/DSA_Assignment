@@ -3,7 +3,7 @@ import java.util.Iterator;
 public class DSAGraphVertex {
     private Object label;
     private Object value;
-    private DSALinkedList links = new DSALinkedList();
+    public DSALinkedList links = new DSALinkedList();
     private boolean visited;
 
     public DSAGraphVertex(Object inLabel, Object inValue)
@@ -30,6 +30,11 @@ public class DSAGraphVertex {
     public void addEdge(DSAGraphVertex vertex)
     {
         links.insertLast(vertex);
+    }
+
+    public void setLabel(Object inLabel)
+    {
+        label = inLabel;
     }
 
     public void setVisited()

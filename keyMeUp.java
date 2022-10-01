@@ -76,7 +76,12 @@ public class keyMeUp
                                         
                                     break;
                                     case 4:
-
+                                        sc.nextLine();
+                                        System.out.println("Enter current label on node");
+                                        Object oldLabel = sc.nextLine();
+                                        System.out.println("Enter new label for node");
+                                        Object newLabel = sc.nextLine();
+                                        graph.updateNode(oldLabel, newLabel);
                                     break;
                                 }
                             break;

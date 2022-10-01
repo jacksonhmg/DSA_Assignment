@@ -1,48 +1,32 @@
-Breadth wins for t1 ?&G $&^*1 Aa ! 
+Breadth wins for he$P~1o ! 
 
 Breadth path:
-1  -> 2 -> 3 -> 4 -> 5 -> t
-t  -> 5 -> 4 -> 3 -> 2 -> 1
-1  -> BACK -> @ -> SPACE
-SPACE  -> #+= -> CAPS
-CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> = -> ; -> ?
-?  -> ; -> &
-&  -> L -> K -> J -> H -> G
-G  -> B -> SPACE(-u)
-SPACE(-u)  -> #+=(-u)
-#+=(-u)  -> ABC -> 3(-p) -> 4(-p) -> $
-$  -> % -> ^ -> &(-p)
-&(-p)  -> ^
-^  -> &(-p) -> *(-p)
-*(-p)  -> 8(-p) -> SPACE(-p) -> OK(-p) -> BACK(-p) -> 1(-p)
-1(-p)  -> BACK(-p) -> -(-p) -> SPACE(-p)
-SPACE(-p)  -> ABC
+1  -> 2 -> 123 -> SPACE -> b -> h
+h  -> y -> t -> r -> e
+e  -> 3 -> #+=
+#+=  -> ABC -> 3 -> 4 -> $
+$  -> 4 -> 3 -> ABC
 ABC  -> #+= -> CAPS
-CAPS  -> CAPS(-u) -> X -> S -> A
-A  -> S -> X -> CAPS(-u)
-CAPS(-u)  -> CAPS -> x -> s -> a
-64 steps
+CAPS  -> CAPS -> A -> Q -> - -> P
+P  -> 0 -> SPACE -> #+=
+#+=  -> ABC -> GLOBE -> < -> ~
+~  -> ! -> 1
+1  -> GLOBE -> ABC
+ABC  -> #+= -> SPACE -> @ -> 9 -> o
+41 steps
 
 Depth path:
-1  -> BACK -> OK -> SPACE -> 7 -> u -> y -> t
-t  -> 5 -> SPACE -> #+= -> 3 -> 2 -> 1
-1  -> BACK -> OK -> SPACE
-SPACE  -> #+= -> CAPS
-CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> = -> ; -> ?
-?  -> ; -> &
-&  -> ! -> SPACE(-u) -> M -> J -> H -> G
-G  -> B -> SPACE(-u)
-SPACE(-u)  -> #+=(-u)
-#+=(-u)  -> ABC -> SPACE(-p) -> ,(-p) -> } -> { -> +(-p) -> \ -> $
-$  -> 4(-p) -> SPACE(-p) -> 7(-p) -> &(-p)
-&(-p)  -> ^
-^  -> &(-p) -> *(-p)
-*(-p)  -> 8(-p) -> SPACE(-p) -> ABC -> GLOBE(-p) -> 1(-p)
-1(-p)  -> BACK(-p) -> OK(-p) -> SPACE(-p)
-SPACE(-p)  -> ABC
+1  -> 2 -> 123 -> SPACE -> b -> h
+h  -> b -> SPACE -> 123 -> z -> s -> d -> e
+e  -> 3 -> #+=
+#+=  -> ABC -> SPACE -> , -> } -> { -> + -> \ -> $
+$  -> # -> = -> ; -> ABC
 ABC  -> #+= -> CAPS
-CAPS  -> CAPS(-u) -> GLOBE(-u) -> OK(-u) -> RETURN(-u) -> Q -> A
-A  -> Z -> GLOBE(-u) -> CAPS(-u)
-CAPS(-u)  -> CAPS -> 2 -> 1 -> q -> a
-76 steps
+CAPS  -> CAPS -> #+= -> SPACE -> M -> K -> L -> & -> P
+P  -> 0 -> SPACE -> #+=
+#+=  -> ABC -> ; -> = -> ` -> ~
+~  -> ! -> 1
+1  -> GLOBE -> ABC
+ABC  -> #+= -> SPACE -> 7 -> 8 -> i -> o
+54 steps
 
