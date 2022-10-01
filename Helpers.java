@@ -280,10 +280,10 @@ public class Helpers {
                         {
                             strArr2[j] = "ABC";
                             numCheck = false;
-                            /*if(check == 6)
+                            if(check == 6)
                             {
                                 capCheck = true;
-                            }*/
+                            }
                         }
                     }
                     if(j>i+1)
@@ -307,6 +307,10 @@ public class Helpers {
                 }
                 strArr = strArr2;
                 i++;
+                if(check == 6)
+                {
+                    i++;
+                }
                 
             }
             
