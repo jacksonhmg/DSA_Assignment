@@ -2,7 +2,9 @@ import java.io.*;
 import java.util.*;
 public class Helpers {
     
-    public static void writeOneRow(String pFileName, String pInputString)
+    public boolean printSaveCheck = true;
+
+    public void writeOneRow(String pFileName, String pInputString)
     {
         PrintWriter pw;
         try {
@@ -14,7 +16,7 @@ public class Helpers {
         }
     }
 
-    public static int saveList(String pFileName, DSALinkedList list)
+    public int saveList(String pFileName, DSALinkedList list)
     {
         boolean capCheck = false;
         PrintWriter pw;
@@ -26,13 +28,16 @@ public class Helpers {
             {
                 DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
                 String label = (String)printV.getLabel();
-                /*if(label.length() > 2)
+                if(!printSaveCheck)
                 {
-                    if(label.substring(label.length()-2).equals("(-u)"))
+                    if(label.length() > 4)
                     {
-                        label = label.substring(0,label.length()-2);
+                        if(label.substring(label.length()-4).equals("(-u)") || label.substring(label.length()-4).equals("(-p)"))
+                        {
+                            label = label.substring(0,label.length()-4);
+                        }
                     }
-                }/* */
+                }
                 if(count == 0)
                 {
                     pw.print(label + " ");
@@ -61,7 +66,7 @@ public class Helpers {
         return count;
     }
 
-    public static int printList(DSALinkedList list)
+    public int printList(DSALinkedList list)
     {
         int count = 0;
         boolean capCheck = false;
@@ -70,13 +75,16 @@ public class Helpers {
         {
             DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
             String label = (String)printV.getLabel();
-            /*if(label.length() > 2)
+            if(!printSaveCheck)
             {
-                if(label.substring(label.length()-2).equals("(-u)"))
+                if(label.length() > 4)
                 {
-                    label = label.substring(0,label.length()-2);
+                    if(label.substring(label.length()-4).equals("(-u)") || label.substring(label.length()-4).equals("(-p)"))
+                    {
+                        label = label.substring(0,label.length()-4);
+                    }
                 }
-            }*/
+            }
             if(count == 0)
             {
                 System.out.print(label + " ");
@@ -103,7 +111,7 @@ public class Helpers {
         return count-1;
     }
 
-    public static String[] stringFix(String string, DSAGraph graph)
+    public String[] stringFix(String string, DSAGraph graph)
     {
         int count = 0;
         boolean capsCheck = false; /* placed outside of loop so that loop can keep track of if CAPS LOCK is on */
@@ -201,7 +209,7 @@ public class Helpers {
 
 
 
-    public static String[] stringFix2(String string, DSAGraph graph)
+    public String[] stringFix2(String string, DSAGraph graph)
     {
         int count = 0;
         boolean capsCheck = false;
@@ -328,7 +336,7 @@ public class Helpers {
 
 
 
-    public static int capsCrosser(String source, String dest, DSAGraph graph, boolean capCheck, boolean numCheck)
+    public int capsCrosser(String source, String dest, DSAGraph graph, boolean capCheck, boolean numCheck)
     {
         //System.out.println(graph.hasVertex("1"));
         if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 1 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 1)
@@ -363,14 +371,14 @@ public class Helpers {
 
 
 
-    public static String[] processLine(String csvRow)
+    public String[] processLine(String csvRow)
     {  //reading one row of a file at a time, separated by string.split method
         String[] splitLine;
         splitLine = csvRow.split(" "); 
         return splitLine;
     }
 
-    public static String[] processLine2(String csvRow)
+    public String[] processLine2(String csvRow)
     {  //reading one row of a file at a time, separated by string.split method
         String[] splitLine;
         splitLine = csvRow.split(""); 

@@ -4,6 +4,8 @@ import java.lang.*;
 
 public class keyMeUp
 {
+    public static Helpers helpers = new Helpers();
+
     public static void main(String[] args)
     {
         DSAGraph graph = new DSAGraph();
@@ -203,7 +205,7 @@ public class keyMeUp
                                     writeString += " " + y.getLabel();
                                 }
                             }
-                            Helpers.writeOneRow(saveFile, writeString);
+                            helpers.writeOneRow(saveFile, writeString);
                         }
                     break;
 
@@ -240,7 +242,7 @@ public class keyMeUp
             File myObj = new File(args[2]);
             Scanner myReader = new Scanner(myObj);
             String data = myReader.nextLine();
-            sArray = Helpers.processLine2(data);
+            sArray = helpers.processLine2(data);
             for(int i = 0; i < sArray.length; i++)
             {
                 string += sArray[i];
@@ -261,7 +263,7 @@ public class keyMeUp
             while (myReader.hasNextLine())
             {
                 String data = myReader.nextLine();
-                String[] sArray = Helpers.processLine(data);
+                String[] sArray = helpers.processLine(data);
                 for(int i = 0; i < sArray.length; i++)
                 {
                     boolean directed = false;

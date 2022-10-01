@@ -4,6 +4,7 @@ import java.io.*;
 public class DSAGraph{
     public DSALinkedList vertices = new DSALinkedList();
     public DSALinkedList edges = new DSALinkedList();
+    public Helpers helpers = new Helpers();
 
     public void addVertex(Object label, Object value)
     {
@@ -111,8 +112,6 @@ public class DSAGraph{
     public boolean isAdjacent(Object label1, Object label2)
     {
         Iterator ill = edges.iterator();
-        DSAGraphVertex vert1 = getVertex(label1);
-        DSAGraphVertex vert2 = getVertex(label2);
         boolean checker = false;
         while(ill.hasNext())
         {
@@ -269,16 +268,16 @@ public class DSAGraph{
         } while(!((v.getLabel()).equals(source.getLabel())));
         if(option == 0)
         {
-            Helpers.saveList(pFileName, list);
+            helpers.saveList(pFileName, list);
         }
         else if(option == 1)
         {
-            Helpers.printList(list);
+            helpers.printList(list);
         }
         else if(option == 2)
         {
-            Helpers.saveList(pFileName, list);
-            Helpers.printList(list);
+            helpers.saveList(pFileName, list);
+            helpers.printList(list);
         }
         return list.length() - 1;
     }
@@ -286,7 +285,7 @@ public class DSAGraph{
     public int breadthStringPath(String string, String pFileName, int option)
     { 
         int count = 0;
-        String[] strArr = Helpers.stringFix2(string, this);
+        String[] strArr = helpers.stringFix2(string, this);
         for(int i = 0; i < strArr.length-1; i++)
         {
             count += breadthFirstSearchFind(strArr[i], strArr[i+1], pFileName, option);
@@ -296,7 +295,6 @@ public class DSAGraph{
 
     public int depthFirstSearchFind(Object source, Object dest, String pFileName, int option)
     {
-        int count = 0;
         DSAQueue T = new DSAQueue();
         DSAStack S = new DSAStack();
         Iterator clearILL = vertices.iterator();
@@ -359,16 +357,16 @@ public class DSAGraph{
         } while(!((v.getLabel()).equals(source.getLabel())));
         if(option == 0)
         {
-            Helpers.saveList(pFileName, list);
+            helpers.saveList(pFileName, list);
         }
         else if(option == 1)
         {
-            Helpers.printList(list);
+            helpers.printList(list);
         }
         else if(option == 2)
         {
-            Helpers.saveList(pFileName, list);
-            Helpers.printList(list);
+            helpers.saveList(pFileName, list);
+            helpers.printList(list);
         }
         else if(option == 4)
         {
@@ -488,7 +486,6 @@ public class DSAGraph{
 
     public int depthFirstSearchFindCAPSCHECK(Object source, Object dest, boolean capCheck, boolean numCheck)
     {
-        int count = 0;
         DSAQueue T = new DSAQueue();
         DSAStack S = new DSAStack();
         Iterator clearILL = vertices.iterator();
@@ -606,7 +603,7 @@ public class DSAGraph{
     public int depthStringPath(String string, String pFileName, int option)
     {
         int count = 0;
-        String[] strArr = Helpers.stringFix2(string, this);
+        String[] strArr = helpers.stringFix2(string, this);
         for(int i = 0; i < strArr.length-1; i++)
         {
             count += depthFirstSearchFind(strArr[i], strArr[i+1], pFileName, option);
@@ -616,21 +613,24 @@ public class DSAGraph{
 
     public void displayRankedPaths(String inputString, String pFileName, int option)
     {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nWould you like to keep the uppercase/punctuation suffixes on keys printed/saved. These suffixes help show which keyboard specific keys with duplicates are from. Enter true for yes, or false for no");
+        helpers.printSaveCheck = sc.nextBoolean();
         if(depthStringPath(inputString, pFileName, 4) < breadthStringPath(inputString, pFileName, 4))
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
-            Helpers.writeOneRow(pFileName, "Depth wins for " + inputString + " ! \n");
+            helpers.writeOneRow(pFileName, "Depth wins for " + inputString + " ! \n");
             System.out.println("Depth wins for " + inputString + " ! \n");
-            Helpers.writeOneRow(pFileName, "Depth path:");
+            helpers.writeOneRow(pFileName, "Depth path:");
             System.out.println("Depth path:");
             int x = depthStringPath(inputString, pFileName, option);
-            Helpers.writeOneRow(pFileName, x + " steps\n");
+            helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
-            Helpers.writeOneRow(pFileName, "Breadth path:");
+            helpers.writeOneRow(pFileName, "Breadth path:");
             System.out.println("Breadth path:");
             x = breadthStringPath(inputString, pFileName, option);
-            Helpers.writeOneRow(pFileName, x + " steps\n");
+            helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
             System.out.println("See " + pFileName + " for saved ranked paths");
         }
@@ -638,17 +638,17 @@ public class DSAGraph{
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
-            Helpers.writeOneRow(pFileName, "Breadth wins for " + inputString + " ! \n");
+            helpers.writeOneRow(pFileName, "Breadth wins for " + inputString + " ! \n");
             System.out.println("Breadth wins for " + inputString + " ! \n");
-            Helpers.writeOneRow(pFileName, "Breadth path:");
+            helpers.writeOneRow(pFileName, "Breadth path:");
             System.out.println( "Breadth path:");
             int x = breadthStringPath(inputString, pFileName, option);
-            Helpers.writeOneRow(pFileName, x + " steps\n");
+            helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
-            Helpers.writeOneRow(pFileName, "Depth path:");
+            helpers.writeOneRow(pFileName, "Depth path:");
             System.out.println( "Depth path:");
             x = depthStringPath(inputString, pFileName, option);
-            Helpers.writeOneRow(pFileName, x + " steps\n");
+            helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
             System.out.println("See " + pFileName + " for saved ranked paths");
         }
@@ -656,17 +656,17 @@ public class DSAGraph{
         {
             File f= new File(pFileName);           //file to be delete  
             f.delete();
-            Helpers.writeOneRow(pFileName, "TIE for " + inputString + " ! \n");
+            helpers.writeOneRow(pFileName, "TIE for " + inputString + " ! \n");
             System.out.println("Breadth wins for " + inputString + " ! \n");
-            Helpers.writeOneRow(pFileName, "Breadth path:");
+            helpers.writeOneRow(pFileName, "Breadth path:");
             System.out.println( "Breadth path:");
             int x = breadthStringPath(inputString, pFileName, option);
-            Helpers.writeOneRow(pFileName, x + " steps\n");
+            helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
-            Helpers.writeOneRow(pFileName, "Depth path:");
+            helpers.writeOneRow(pFileName, "Depth path:");
             System.out.println( "Depth path:");
             x = depthStringPath(inputString, pFileName, option);
-            Helpers.writeOneRow(pFileName, x + " steps\n");
+            helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
             System.out.println("See " + pFileName + " for saved ranked paths");
         }
