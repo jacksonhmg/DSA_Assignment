@@ -428,8 +428,23 @@ public class DSAGraph{
     }
 
 
+    public int depthStringPath(String string, String pFileName, int option)
+    {
+        int count = 0;
+        String[] strArr = helpers.stringFix2(string, this);
+        for(int i = 0; i < strArr.length-1; i++)
+        {
+            count += depthFirstSearchFind(strArr[i], strArr[i+1], pFileName, option);
+        }
+        return count;
+    }
 
 
+    /* The next four methods are the CAPSCHECK methods. This methods help stringFix (Helpers.java) find if a path would've crossed over into another keyboard,
+     * either uppercase version or punctuation version which then allows stringFix to backtrack and place a traversal key in the path to make the path make sense.
+     * For example, if the path was crossing from lowercase keyboard to uppercase keyboard to output the path, stringFix would go back and ensure the path CLICKS onto
+     * CAPS before it enters uppercase. See stringFix (Helpers.java) for more details
+     */
 
     public int breadthFirstSearchFindCAPSCHECK(Object source, Object dest, boolean capCheck, boolean numCheck)
     {
@@ -641,27 +656,6 @@ public class DSAGraph{
         return crossCheck;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-    public int depthStringPath(String string, String pFileName, int option)
-    {
-        int count = 0;
-        String[] strArr = helpers.stringFix2(string, this);
-        for(int i = 0; i < strArr.length-1; i++)
-        {
-            count += depthFirstSearchFind(strArr[i], strArr[i+1], pFileName, option);
-        }
-        return count;
-    }
 
     public void displayRankedPaths(String inputString, String pFileName, int option)
     {

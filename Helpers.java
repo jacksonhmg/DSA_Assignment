@@ -111,104 +111,6 @@ public class Helpers {
         return count-1;
     }
 
-    public String[] stringFix(String string, DSAGraph graph)
-    {
-        int count = 0;
-        boolean capsCheck = false; /* placed outside of loop so that loop can keep track of if CAPS LOCK is on */
-        String[] strArr = string.split("");
-        for(int i = 0; i < strArr.length; i++)
-        {
-            if((Character.isUpperCase(strArr[i].charAt(0)) || (strArr[i].length() > 1 && (graph.hasVertex(strArr[i]+"(-u)")) && (!graph.hasVertex(strArr[i])))) && !capsCheck)
-            {
-                String[] strArr2 = new String[strArr.length + 1];
-                for(int j = 0; j < strArr2.length; j++)
-                {
-                    if(j<i)
-                    {
-                        strArr2[j] = strArr[j];
-                    }
-                    else if(j==i)
-                    {
-                        strArr2[j] = "CAPS";
-                    }
-                    else if(j==i+1)
-                    {
-                        strArr2[j] = strArr[i];
-                    }
-                    else
-                    {
-                        strArr2[j] = strArr[j-1];
-                    }
-                }
-                strArr = strArr2;
-                i +=1;
-                count ++;
-                capsCheck = true;
-            }
-            else if((Character.isLowerCase(strArr[i].charAt(0)) || (strArr[i].length() > 1 && (graph.hasVertex(strArr[i])) && !(graph.hasVertex(strArr[i]+"(-u)")))) && capsCheck)
-            {
-                String[] strArr2 = new String[strArr.length + 1];
-                for(int j = 0; j < strArr2.length; j++)
-                {
-                    if(j<i)
-                    {
-                        strArr2[j] = strArr[j];
-                    }
-                    else if(j==i)
-                    {
-                        strArr2[j] = "CAPS";
-                    }
-                    else if(j==i+1)
-                    {
-                        strArr2[j] = strArr[i];
-                    }
-                    else
-                    {
-                        strArr2[j] = strArr[j-1];
-                    }
-                }
-                strArr = strArr2;
-                i +=1;
-                count ++;
-                capsCheck = false;
-            }
-            if(strArr[i].equals(" "))
-            {
-                strArr[i] = "SPACE";
-            }
-            if(graph.hasVertex(strArr[i]+"(-u)") && capsCheck)
-            {
-                strArr[i] += "(-u)";
-            }
-            
-            
-
-            // if(strArr[i].length() < 2)
-            // {
-            //     strArr[i] = strArr[i].toLowerCase();
-
-            // }
-            
-            /*System.out.println(strArr[i]);
-            System.out.println(i);
-            System.out.println(strArr.length);*/
-            if(i == strArr.length - 1)
-            {
-                break;
-            }
-            
-        }
-        /*for(int i = 0; i < strArr.length; i++)
-        {
-            System.out.print(strArr[i] + " ");
-        }*/
-        return strArr;
-    }
-
-
-
-
-
     public String[] stringFix2(String string, DSAGraph graph)
     {
         int count = 0;
@@ -372,14 +274,14 @@ public class Helpers {
 
 
     public String[] processLine(String csvRow)
-    {  //reading one row of a file at a time, separated by string.split method
+    {  //reading one row of a file at a time, separated by a space
         String[] splitLine;
         splitLine = csvRow.split(" "); 
         return splitLine;
     }
 
     public String[] processLine2(String csvRow)
-    {  //reading one row of a file at a time, separated by string.split method
+    {  //reading one row of a file at a time, separated by each character
         String[] splitLine;
         splitLine = csvRow.split(""); 
         return splitLine;

@@ -1,32 +1,8 @@
-Breadth wins for he$P~1o ! 
+Breadth wins for tesT? ! 
 
 Breadth path:
-1  -> 2 -> 123 -> SPACE -> b -> h
-h  -> y -> t -> r -> e
-e  -> 3 -> #+=
-#+=  -> ABC -> 3 -> 4 -> $
-$  -> 4 -> 3 -> ABC
-ABC  -> #+= -> CAPS
-CAPS  -> CAPS -> A -> Q -> - -> P
-P  -> 0 -> SPACE -> #+=
-#+=  -> ABC -> GLOBE -> < -> ~
-~  -> ! -> 1
-1  -> GLOBE -> ABC
-ABC  -> #+= -> SPACE -> @ -> 9 -> o
-41 steps
+22 steps
 
 Depth path:
-1  -> 2 -> 123 -> SPACE -> b -> h
-h  -> b -> SPACE -> 123 -> z -> s -> d -> e
-e  -> 3 -> #+=
-#+=  -> ABC -> SPACE -> , -> } -> { -> + -> \ -> $
-$  -> # -> = -> ; -> ABC
-ABC  -> #+= -> CAPS
-CAPS  -> CAPS -> #+= -> SPACE -> M -> K -> L -> & -> P
-P  -> 0 -> SPACE -> #+=
-#+=  -> ABC -> ; -> = -> ` -> ~
-~  -> ! -> 1
-1  -> GLOBE -> ABC
-ABC  -> #+= -> SPACE -> 7 -> 8 -> i -> o
-54 steps
+36 steps
 
