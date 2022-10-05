@@ -1,8 +1,42 @@
-Breadth wins for tesT? ! 
+Breadth wins for tesT123Y?$Tt ! 
 
 Breadth path:
-22 steps
+1  -> 2 -> 3 -> 4 -> 5 -> t
+t  -> r -> e
+e  -> w -> s
+s  -> x -> CAPS
+CAPS  -> CAPS(-u) -> 2(-u) -> 3(-u) -> 4(-u) -> 5(-u) -> T
+T  -> 5(-u) -> 4(-u) -> 3(-u) -> 2(-u) -> 1(-u)
+1(-u)  -> 2(-u)
+2(-u)  -> 3(-u)
+3(-u)  -> 4(-u) -> 5(-u) -> 6(-u) -> Y
+Y  -> 6(-u) -> SPACE(-u) -> M -> * -> # -> ! -> ?
+?  -> SPACE(-u) -> #+=(-u)
+#+=(-u)  -> ABC -> 3(-p) -> 4(-p) -> $
+$  -> 4(-p) -> 3(-p) -> ABC
+ABC  -> #+= -> CAPS
+CAPS  -> CAPS(-u) -> 2(-u) -> 3(-u) -> 4(-u) -> 5(-u) -> T
+T  -> 5(-u) -> SPACE(-u) -> #+=(-u)
+#+=(-u)  -> ABC -> #+= -> 3 -> 4 -> 5 -> t
+61 steps
 
 Depth path:
-36 steps
+1  -> BACK -> OK -> SPACE -> 7 -> u -> y -> t
+t  -> r -> e
+e  -> w -> s
+s  -> x -> CAPS
+CAPS  -> CAPS(-u) -> #+=(-u) -> SPACE(-u) -> 7(-u) -> U -> Y -> T
+T  -> 5(-u) -> SPACE(-u) -> #+=(-u) -> 3(-u) -> 2(-u) -> 1(-u)
+1(-u)  -> 2(-u)
+2(-u)  -> 3(-u)
+3(-u)  -> E -> D -> F -> G -> H -> Y
+Y  -> 6(-u) -> SPACE(-u) -> OK(-u) -> RETURN(-u) -> = -> ; -> ?
+?  -> SPACE(-u) -> #+=(-u)
+#+=(-u)  -> ABC -> SPACE(-p) -> ,(-p) -> } -> { -> +(-p) -> \ -> $
+$  -> #(-p) -> =(-p) -> ;(-p) -> ABC
+ABC  -> #+= -> CAPS
+CAPS  -> CAPS(-u) -> #+=(-u) -> SPACE(-u) -> 7(-u) -> U -> Y -> T
+T  -> 5(-u) -> SPACE(-u) -> #+=(-u)
+#+=(-u)  -> ABC -> #+= -> SPACE -> 7 -> u -> y -> t
+74 steps
 

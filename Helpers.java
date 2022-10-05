@@ -286,4 +286,64 @@ public class Helpers {
         splitLine = csvRow.split(""); 
         return splitLine;
     }
+
+
+    public String readInString(String[] args)
+    {
+        String[] sArray = null;
+        String string = "";
+        try{
+            File myObj = new File(args[2]);
+            Scanner myReader = new Scanner(myObj);
+            String data = myReader.nextLine();
+            sArray = processLine2(data);
+            for(int i = 0; i < sArray.length; i++)
+            {
+                string += sArray[i];
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return string;
+    }
+
+    public void readInGraph(String file, DSAGraph graph)
+    {
+        try{
+            graph.wipe();
+            File myObj = new File(file);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine())
+            {
+                String data = myReader.nextLine();
+                String[] sArray = processLine(data);
+                for(int i = 0; i < sArray.length; i++)
+                {
+                    boolean directed = false;
+                    if(sArray[i].length() > 2)
+                    {
+                        if(sArray[i].charAt(0) == '-' && sArray[i].charAt(1) == 'd')
+                        {
+                            directed = true;
+                            sArray[i] = sArray[i].substring(2,sArray[i].length());
+                        }
+                    }
+                    graph.addVertex(sArray[i], sArray[i]);
+                    if(i != 0)
+                    {
+                        graph.addEdge(sArray[0], sArray[i], directed);
+                    }
+                }
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

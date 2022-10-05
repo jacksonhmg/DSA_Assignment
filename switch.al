@@ -145,7 +145,7 @@ RETURN(-p) _(-p) BACK(-p) OK(-p) !(-p)
 [ | ( ] ?(-p)
 ] [ ) /(-p) -dRETURN(-p)
 < -dOK(-p) ~ > GLOBE(-p)
-> < ` ;(-p) 2
+> < ` ;(-p) 2(-p)
 ;(-p) > =(-p) :(-p) ABC
 :(-p) ;(-p) \ " -dSPACE(-p)
 " :(-p) +(-p) '(-p) -dSPACE(-p)

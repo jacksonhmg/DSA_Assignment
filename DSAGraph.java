@@ -6,6 +6,12 @@ public class DSAGraph{
     public DSALinkedList edges = new DSALinkedList();
     public Helpers helpers = new Helpers();
 
+    public void wipe()
+    {
+        vertices = new DSALinkedList();
+        edges = new DSALinkedList();
+    }
+
     public void addVertex(Object label, Object value)
     {
         if(!(hasVertex(label)))
@@ -165,7 +171,7 @@ public class DSAGraph{
         while(ill2.hasNext())
         {
             DSAGraphEdge e = (DSAGraphEdge)ill2.next();
-            if(!(e.getFrom().equals(label)) && !(e.getTo().equals(label)))
+            if(!(e.getFrom().getLabel().equals(label)) && !(e.getTo().getLabel().equals(label)))
             {
                 newEdgeList.insertLast(e);
             }
@@ -318,6 +324,12 @@ public class DSAGraph{
             }
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
+        /*if(source == dest)
+        {
+            list = new DSALinkedList();
+            list.insertFirst(dest);
+            list.insertFirst(source);
+        }*/
         if(option == 0)
         {
             helpers.saveList(pFileName, list);
@@ -407,6 +419,12 @@ public class DSAGraph{
             }
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
+        /*if(source == dest)
+        {
+            list = new DSALinkedList();
+            list.insertFirst(dest);
+            list.insertFirst(source);
+        }*/
         if(option == 0)
         {
             helpers.saveList(pFileName, list);
@@ -717,42 +735,6 @@ public class DSAGraph{
             System.out.println("See " + pFileName + " for saved ranked paths");
         }
     }
-
-    /*public int myDepthFunc(String source, String dest)
-    {
-        DSAQueue queue = new DSAQueue();
-        int count = 0;
-        Iterator clearIll = vertices.iterator();
-        while(clearIll.hasNext())
-        {
-            DSAGraphVertex clearV = (DSAGraphVertex)clearIll.next();
-            clearV.clearVisited();
-        }
-        myDepthFunc2(source, dest,queue, count);
-    }
-
-    public int myDepthFunc2(String source, String dest, DSAQueue queue, int count)
-    {
-        DSAGraphVertex v = getVertex(source);
-        v.setVisited();
-        queue.enqueue(v);
-        Iterator ill = (v.getAdjacent()).iterator();
-        while(ill.hasNext())
-        {
-            DSAGraphVertex w = (DSAGraphVertex)ill.next();
-            if(!(w.getVisited()))
-            {
-                count++;
-                //queue.enqueue(w);
-                if(w != getVertex(dest))
-                {
-                    myDepthFunc2((String)w.getLabel(), dest, queue, count);
-                }
-            }
-        }
-    }*/
-
-
 
 
 }
