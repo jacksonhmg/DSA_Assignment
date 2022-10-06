@@ -11,7 +11,7 @@ public class TestHarness {
         Helpers helpers = new Helpers();
 
 //---------------------------------------------------------------------------
-        System.out.println("=======================================");
+        System.out.println("===================Testing Graph Methods====================");
 
         // TEST 1 : addVertex
         try {
@@ -267,33 +267,31 @@ public class TestHarness {
         try {
             iNumTests++;
             System.out.print("Testing depthFirstSearchCAPSCHECK and shortestPathDepthCAPSCHECK: \n");
-            if(DSAG.depthFirstSearchFindCAPSCHECK("b", "a", false, false) != 0)
+            if(DSAG.depthFirstSearchFindCAPSCHECK("q", "a", false, false) != 0)
             {
                 throw new IllegalArgumentException("0");
             }
-            if(DSAG.depthFirstSearchFindCAPSCHECK("b", "B", false, false) != 1)
+            if(DSAG.depthFirstSearchFindCAPSCHECK("q", "Q", false, false) != 1)
             {
                 throw new IllegalArgumentException("1");
             }
-            if(DSAG.depthFirstSearchFindCAPSCHECK("B", "b", true, false) != 2)
+            if(DSAG.depthFirstSearchFindCAPSCHECK("Q", "q", true, false) != 2)
             {
-                System.out.println(DSAG.depthFirstSearchFindCAPSCHECK("B", "b", true, false));
-                DSAG.depthFirstSearchFind("B","b",null,1);
                 throw new IllegalArgumentException("2");
             }
-            if(DSAG.depthFirstSearchFindCAPSCHECK("b", "{", false, false) != 3)
+            if(DSAG.depthFirstSearchFindCAPSCHECK("q", "{", false, false) != 3)
             {
                 throw new IllegalArgumentException("3");
             }
-            if(DSAG.depthFirstSearchFindCAPSCHECK("B", "{", true, false) != 4)
+            if(DSAG.depthFirstSearchFindCAPSCHECK("Q", "{", true, false) != 4)
             {
                 throw new IllegalArgumentException("4");
             }
-            if(DSAG.depthFirstSearchFindCAPSCHECK("{", "b", false, true) != 5)
+            if(DSAG.depthFirstSearchFindCAPSCHECK("{", "q", false, true) != 5)
             {
                 throw new IllegalArgumentException("5");
             }
-            if(DSAG.depthFirstSearchFindCAPSCHECK("$", "B", false, true) != 6)
+            if(DSAG.depthFirstSearchFindCAPSCHECK("$", "Q", false, true) != 6)
             {
                 throw new IllegalArgumentException("6");
             }
@@ -303,7 +301,179 @@ public class TestHarness {
 
 
 
-        System.out.println("Number PASSED: " + iNumPassed + "/" + iNumTests);
+
+
+        System.out.println("===================Testing GraphEdge Methods====================");
+        DSAGraphVertex vert1 = new DSAGraphVertex("1","1");
+        DSAGraphVertex vert2 = new DSAGraphVertex("2","2");
+        DSAGraphEdge edge = new DSAGraphEdge(vert1,vert2,"1to2",1,true);
+
+        //TEST 19 : getLabel
+        try {
+            iNumTests++;
+            System.out.print("Testing getLabel: ");
+            if(!edge.getLabel().equals("1to2"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 20 : getValue
+        try {
+            iNumTests++;
+            System.out.print("Testing getValue: ");
+            if(!edge.getValue().equals(1))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 21 : getFrom
+        try {
+            iNumTests++;
+            System.out.print("Testing getFrom: ");
+            if(!edge.getFrom().getLabel().equals("1"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 22 : getTo
+        try {
+            iNumTests++;
+            System.out.print("Testing getTo: ");
+            if(!edge.getTo().getLabel().equals("2"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 23 : isDirected
+        try {
+            iNumTests++;
+            System.out.print("Testing isDirected: ");
+            if(!edge.isDirected())
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+
+
+        System.out.println("===================Testing GraphVertex Methods====================");
+        //TEST 24 : getLabel
+        try {
+            iNumTests++;
+            System.out.print("Testing getLabel: ");
+            if(!vert1.getLabel().equals("1"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 25 : getValue
+        try {
+            iNumTests++;
+            System.out.print("Testing getValue: ");
+            if(!vert2.getValue().equals("2"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 26 : setLabel
+        try {
+            iNumTests++;
+            System.out.print("Testing setLabel: ");
+            vert1.setLabel("3");
+            if(!vert1.getLabel().equals("3"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+        
+        //TEST 27 : setVisited
+        try {
+            iNumTests++;
+            System.out.print("Testing setVisited: ");
+            vert1.setVisited();
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 28 : getVisited
+        try {
+            iNumTests++;
+            System.out.print("Testing getVisited: ");
+            if(!vert1.getVisited())
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 29 : clearVisited
+        try {
+            iNumTests++;
+            System.out.print("Testing clearVisited: ");
+            vert1.clearVisited();
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        
+        System.out.println("===================Testing LinkedList Methods====================");
+        DSALinkedList list = new DSALinkedList();
+
+        //TEST 30 : listLength
+        try {
+            iNumTests++;
+            System.out.print("Testing list length: ");
+            if(list.length() != 0)
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 31 : insertFirst
+        try {
+            iNumTests++;
+            System.out.print("Testing insert first: ");
+            list.insertFirst("1");
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 32 : insertLast
+        try {
+            iNumTests++;
+            System.out.print("Testing insert last: ");
+            list.insertLast("2");
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+
+        System.out.println("\nNumber PASSED: " + iNumPassed + "/" + iNumTests);
     }
 }
 
