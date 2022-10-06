@@ -4,11 +4,11 @@ public class Helpers {
     
     public boolean printSaveCheck = true;
 
-    public void writeOneRow(String pFileName, String pInputString)
+    public void writeOneRow(String pFileName, String pInputString) /* method for writing one row to a file */
     {
         PrintWriter pw;
         try {
-            pw = new PrintWriter(new FileWriter(pFileName,true));
+            pw = new PrintWriter(new FileWriter(pFileName,true)); /* appends to it. allows for multiple line printing */
             pw.println(pInputString);
             pw.close();
         } catch (IOException e) {
@@ -28,31 +28,23 @@ public class Helpers {
             {
                 DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
                 String label = (String)printV.getLabel();
-                if(!printSaveCheck)
+                if(!printSaveCheck) /* if doesn't want suffixes, then... */
                 {
                     if(label.length() > 4)
                     {
-                        if(label.substring(label.length()-4).equals("(-u)") || label.substring(label.length()-4).equals("(-p)"))
+                        if(label.substring(label.length()-4).equals("(-u)") || label.substring(label.length()-4).equals("(-p)")) /* if has suffix, then... */
                         {
-                            label = label.substring(0,label.length()-4);
+                            label = label.substring(0,label.length()-4); /* remove suffix */
                         }
                     }
                 }
                 if(count == 0)
                 {
                     pw.print(label + " ");
-                    /*if(label.equals("CAPS"))
-                    {
-                        capCheck = true;
-                    }*/
                 }
                 else
                 {
                     String printString = (String)label;
-                    /*if(capCheck)
-                    {
-                        printString = printString.toUpperCase();
-                    }*/
                     pw.print(" -> " + printString);
                 }
                 
@@ -75,36 +67,25 @@ public class Helpers {
         {
             DSAGraphVertex printV = (DSAGraphVertex)ill2.next();
             String label = (String)printV.getLabel();
-            if(!printSaveCheck)
+            if(!printSaveCheck) /* if doesn't want suffixes, then... */
             {
                 if(label.length() > 4)
                 {
-                    if(label.substring(label.length()-4).equals("(-u)") || label.substring(label.length()-4).equals("(-p)"))
+                    if(label.substring(label.length()-4).equals("(-u)") || label.substring(label.length()-4).equals("(-p)")) /* if has suffix, then... */
                     {
-                        label = label.substring(0,label.length()-4);
+                        label = label.substring(0,label.length()-4); /* remove suffix */
                     }
                 }
             }
             if(count == 0)
             {
                 System.out.print(label + " ");
-                /*if(label.equals("CAPS"))
-                {
-                    capCheck = true;
-                }*/
             }
             else
             {
                 String printString = (String)label;
-                /*if(capCheck)
-                {
-                    printString = printString.toUpperCase();
-                }*/
                 System.out.print(" -> " + printString);
             }
-                
-                //count++;
-            //System.out.print(label + " -> ");
             count ++;
         }
         System.out.println();
@@ -124,7 +105,7 @@ public class Helpers {
             
             if(k==0)
             {
-                strArr3[k] = "1";
+                strArr3[k] = "1"; /* start from 1 on the path, as all keyboards will make you do */
             }
             else
             {
@@ -137,24 +118,23 @@ public class Helpers {
         {
             if(strArr[i+1].equals(" "))
             {
-                strArr[i+1] = "SPACE";
+                strArr[i+1] = "SPACE"; /* change " " into "SPACE" to make it easier to understand and visualise */
             }
-            /*System.out.print(capCheck);*/
             if(graph.hasVertex(strArr[i+1]+"(-u)") && capCheck)
             {
-                strArr[i+1] += "(-u)";
+                strArr[i+1] += "(-u)"; /* this is how my program creates optimal path with duplicate keys. in this example, if the keyboard is in uppercase, and the next key has a duplicate key on the uppercase keyboard (suffix "(-u)") then use that duplicate instead */
             }
             if(graph.hasVertex(strArr[i+1]+"(-p)") && numCheck)
             {
-                strArr[i+1] += "(-p)";
+                strArr[i+1] += "(-p)"; /* see above comment for (-u) */
             }
             int check = capsCrosser(strArr[i],strArr[i+1], graph, capCheck, numCheck);
-            if(check != 0)
+            if(check != 0) /* if there is a funnel that the path has crossed, then...   . A "funnel" is what i say to explain when a keyboard has travelled from one keyboard to another */
             {
                 String[] strArr2 = new String[strArr.length+1];
                 if(check == 6)
                 {
-                    strArr2 = new String[strArr.length+2];
+                    strArr2 = new String[strArr.length+2]; /* if check == 6, then the single path has traversed over more than one funnel */
                 }
                 for(int j = 0; j < strArr2.length; j++)
                 {
@@ -166,33 +146,33 @@ public class Helpers {
                     {
                         if(check == 1)
                         {
-                            strArr2[j] = "CAPS";
+                            strArr2[j] = "CAPS"; /* press CAPS before you travel from the lowercase keyboard and press the key on the uppercase keyboard you were going to press. this is the best way to visualise that */
                             capCheck = !capCheck;
                         }
                         else if(check == 2)
                         {
-                            strArr2[j] = "CAPS(-u)"; 
+                            strArr2[j] = "CAPS(-u)"; /* press CAPS(-u) before you travel from the uppercase keyboard and press the key on the lowercase keyboard you were going to press. this is the best way to visualise that */
                             capCheck = !capCheck;
                         }
                         else if(check == 3)
                         {
-                            strArr2[j] = "#+=";
+                            strArr2[j] = "#+="; /* press #+= before you travel from the lowercase keyboard and press the key on the punctuation keyboard you were going to press. this is the best way to visualise that */
                             numCheck = true;
                             capCheck = false;
                         }
                         else if(check == 4)
                         {
-                            strArr2[j] = "#+=(-u)";
+                            strArr2[j] = "#+=(-u)";  /* press #+= before you travel from the uppercase keyboard and press the key on the punctuation keyboard you were going to press. this is the best way to visualise that */
                             numCheck = true; 
                             capCheck = false;
                         }
                         else if(check == 5 || check == 6)
                         {
-                            strArr2[j] = "ABC";
+                            strArr2[j] = "ABC"; /* press ABC before you travel from the punctuation keyboard and press the key on the uppercase or lowercase keyboard you were going to press. this is the best way to visualise that */
                             numCheck = false;
                             if(check == 6)
                             {
-                                capCheck = true;
+                                capCheck = true; /* travelled to uppercase keyboard */
                             }
                         }
                     }
@@ -206,7 +186,8 @@ public class Helpers {
                         {
                             if(j==i+2)
                             {
-                                strArr2[j] = "CAPS";
+                                strArr2[j] = "CAPS"; /* press ABC to go to lowercase, and then CAPS to go from lowercase to uppercase. 
+                                I made it intentionally harder for myself by replicating exactly the behaviour of the switch (punctuation can only go to lowercase)*/
                             }
                             else if(j>i+2)
                             {
@@ -216,23 +197,19 @@ public class Helpers {
                     }
                 }
                 strArr = strArr2;
-                i++;
+                i++; /* so that it doesn't then iterate to the key we just addressed and infinitely loop */
                 if(check == 6)
                 {
-                    i++;
+                    i++; /* extra add because check == 6 added two places */
                 }
                 
             }
             
             if(i == strArr.length - 1)
             {
-                break;
+                break; /* because we are manually adding to i (the for variable), it will continue the for loop iteration outside of what we are wanting */
             }
         }
-        /*for(int i = 0; i < strArr.length; i++)
-        {
-            System.out.print(strArr[i] + ".");
-        }*/
         return strArr;
     }
 
@@ -240,7 +217,7 @@ public class Helpers {
 
     public int capsCrosser(String source, String dest, DSAGraph graph, boolean capCheck, boolean numCheck)
     {
-        //System.out.println(graph.hasVertex("1"));
+        /* for helping with stringFix */
         if(graph.breadthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 1 || graph.depthFirstSearchFindCAPSCHECK(source, dest, capCheck, numCheck) == 1)
         {
             return 1;
@@ -309,10 +286,13 @@ public class Helpers {
         return string;
     }
 
+
+
+    /* read in the graph files i've created into an actual graph */
     public void readInGraph(String file, DSAGraph graph)
     {
         try{
-            graph.wipe();
+            graph.wipe(); /* make graph empty */
             File myObj = new File(file);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine())
@@ -324,10 +304,10 @@ public class Helpers {
                     boolean directed = false;
                     if(sArray[i].length() > 2)
                     {
-                        if(sArray[i].charAt(0) == '-' && sArray[i].charAt(1) == 'd')
+                        if(sArray[i].charAt(0) == '-' && sArray[i].charAt(1) == 'd') /* this prefix means that the connection is directed */
                         {
                             directed = true;
-                            sArray[i] = sArray[i].substring(2,sArray[i].length());
+                            sArray[i] = sArray[i].substring(2,sArray[i].length()); /* get rid of the prefix for when actually in the graph */
                         }
                     }
                     graph.addVertex(sArray[i], sArray[i]);

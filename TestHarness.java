@@ -472,6 +472,309 @@ public class TestHarness {
             System.out.println("passed");
         } catch(Exception e) { System.out.println("FAILED" + e); }
 
+        //TEST 33 : isEmpty
+        try {
+            iNumTests++;
+            System.out.print("Testing isEmpty: ");
+            if(list.isEmpty())
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 34 : peekFirst
+        try {
+            iNumTests++;
+            System.out.print("Testing peekFirst: ");
+            if(!list.peekFirst().equals("1"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 35 : peekLast
+        try {
+            iNumTests++;
+            System.out.print("Testing peekLast: ");
+            if(!list.peekLast().equals("2"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 36 : removeFirst
+        try {
+            iNumTests++;
+            System.out.print("Testing removeFirst: ");
+            if(!list.removeFirst().equals("1"))
+            {
+                throw new IllegalArgumentException();
+            }
+            if(list.length() != 1)
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 37 : removeLast
+        try {
+            iNumTests++;
+            System.out.print("Testing removeLast: ");
+            if(!list.removeLast().equals("2"))
+            {
+                throw new IllegalArgumentException();
+            }
+            if(list.length() != 0)
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 38 : save
+        try {
+            iNumTests++;
+            System.out.print("Testing save: ");
+            list.save(list,"listsave.txt");
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 39 : load
+        try {
+            iNumTests++;
+            System.out.print("Testing load: ");
+            list.insertFirst(1);
+            list.insertFirst(2);
+            list.insertFirst(3);
+            list.insertFirst(4);
+            if(list.length() != 4)
+            {
+                throw new IllegalArgumentException("0");
+            }
+            list = list.load("listsave.txt");
+            if(list.length() != 0)
+            {
+                throw new IllegalArgumentException("1");
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+
+        System.out.println("===================Testing ListNode Methods====================");
+        
+
+        DSAListNode node = new DSAListNode("1");
+
+        //TEST 40 : getValue
+        try {
+            iNumTests++;
+            System.out.print("Testing getValue: ");
+            if(!node.getValue().equals("1"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 41 : setValue
+        try {
+            iNumTests++;
+            System.out.print("Testing setValue: ");
+            node.setValue("2");
+            if(!node.getValue().equals("2"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 42 : setNext
+        try {
+            iNumTests++;
+            System.out.print("Testing setNext: ");
+            node.setNext(node);
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 43 : getNext
+        try {
+            iNumTests++;
+            System.out.print("Testing getNext: ");
+            if(!node.getNext().getValue().equals("2"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 44 : setPrev
+        try {
+            iNumTests++;
+            System.out.print("Testing setPrev: ");
+            node.setPrev(node);
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 45 : getPrev
+        try {
+            iNumTests++;
+            System.out.print("Testing getPrev: ");
+            if(!node.getNext().getValue().equals("2"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+
+
+        System.out.println("===================Testing Queue Methods====================");
+        DSAQueue queue = new DSAQueue();
+
+        //TEST 46 : isEmpty
+        try {
+            iNumTests++;
+            System.out.print("Testing isEmpty: ");
+            if(!queue.isEmpty())
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 47 : enqueue
+        try {
+            iNumTests++;
+            System.out.print("Testing enqueue: ");
+            queue.enqueue("1");
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 48 : peek
+        try {
+            iNumTests++;
+            System.out.print("Testing dequeue: ");
+            if(!queue.peek().equals("1"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 49 : dequeue
+        try {
+            iNumTests++;
+            System.out.print("Testing dequeue: ");
+            if(!queue.dequeue().equals("1"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+
+        System.out.println("===================Testing Stack Methods====================");
+        DSAStack stack = new DSAStack();
+
+        //TEST 50 : isEmpty
+        try {
+            iNumTests++;
+            System.out.print("Testing isEmpty: ");
+            if(!stack.isEmpty())
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 51 : push
+        try {
+            iNumTests++;
+            System.out.print("Testing push: ");
+            stack.push("1");
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 52 : top
+        try {
+            iNumTests++;
+            System.out.print("Testing top: ");
+            if(!stack.top().equals("1"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 53 : pop
+        try {
+            iNumTests++;
+            System.out.print("Testing pop: ");
+            if(!stack.pop().equals("1"))
+            {
+                throw new IllegalArgumentException();
+            }
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+
+
+        System.out.println("===================Testing Helpers Methods====================");
+
+        //TEST 54 : writeOneRow
+        try {
+            iNumTests++;
+            System.out.print("Testing writeOneRow: ");
+            helpers.writeOneRow("outputForTest54.csv", "test");
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+
+        //TEST 55 : save list
+        try {
+            iNumTests++;
+            System.out.print("Testing saveList: ");
+            helpers.saveList("outputForTest55.txt", list);
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+        //TEST 56 : print list
+        try {
+            iNumTests++;
+            System.out.print("Testing saveList: ");
+            helpers.printList(list);
+            iNumPassed++;
+            System.out.println("passed");
+        } catch(Exception e) { System.out.println("FAILED" + e); }
+
+
 
         System.out.println("\nNumber PASSED: " + iNumPassed + "/" + iNumTests);
     }

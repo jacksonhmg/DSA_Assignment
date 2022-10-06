@@ -1,3 +1,6 @@
+/* TAKEN FROM PRACTICAL 6 WORK */
+
+
 import java.util.Iterator;
 
 public class DSAGraphVertex {

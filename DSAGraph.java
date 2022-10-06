@@ -1,3 +1,7 @@
+/* Unless otherwise stated, every method up until shortestPathBreadth is included from my Practical 6 work in DSA class */
+
+
+
 import java.util.*;
 import java.io.*;
 
@@ -6,12 +10,15 @@ public class DSAGraph{
     public DSALinkedList edges = new DSALinkedList();
     public Helpers helpers = new Helpers();
 
+
+    /* not from Practical 6, this was created for this assignment */
     public void wipe()
     {
         vertices = new DSALinkedList();
         edges = new DSALinkedList();
     }
 
+    /* used from my Practical 6 work */
     public void addVertex(Object label, Object value)
     {
         if(!(hasVertex(label)))
@@ -21,6 +28,7 @@ public class DSAGraph{
         }
     }
 
+    /* used from my Practical 6 work */
     public void addEdge(Object label1, Object label2, boolean directed)
     {
         String edgeLabel = label1 + "to" + label2;
@@ -38,6 +46,8 @@ public class DSAGraph{
         }
     }
 
+
+    /* used from my Practical 6 work */
     public boolean hasVertex(Object label)
     {
         Iterator ill = vertices.iterator();
@@ -54,6 +64,7 @@ public class DSAGraph{
         return check;
     }
 
+    /* used from my Practical 6 work */
     public boolean hasEdge(Object label1, Object label2)
     {
         DSAGraphVertex vert = getVertex(label1);
@@ -66,7 +77,7 @@ public class DSAGraph{
         return check;
     }
 
-
+    /* used from my Practical 6 work */
     public int getVertexCount()
     {
         Iterator ill = vertices.iterator();
@@ -79,6 +90,7 @@ public class DSAGraph{
         return count;
     }
 
+    /* used from my Practical 6 work */
     public int getEdgeCount()
     {
         Iterator ill = edges.iterator();
@@ -91,6 +103,7 @@ public class DSAGraph{
         return count;
     }
 
+    /* used from my Practical 6 work */
     public DSAGraphVertex getVertex(Object label)
     {
         Iterator ill = vertices.iterator();
@@ -107,6 +120,7 @@ public class DSAGraph{
         return vertex;
     }
 
+    /* used from my Practical 6 work */
     public DSALinkedList getAdjacent(Object label)
     {
         DSAGraphVertex vert = getVertex(label);
@@ -115,6 +129,7 @@ public class DSAGraph{
         return list;
     }
 
+    /* used from my Practical 6 work */
     public boolean isAdjacent(Object label1, Object label2)
     {
         Iterator ill = edges.iterator();
@@ -140,7 +155,7 @@ public class DSAGraph{
         return checker;
     }
 
-
+    /* created for this assignment */
     public void deleteVertice(Object label)
     {
         DSALinkedList newVerticeList = new DSALinkedList();
@@ -154,13 +169,13 @@ public class DSAGraph{
                 Iterator intraILL = v.getAdjacent().iterator();
                 while(intraILL.hasNext())
                 {
-                    DSAGraphVertex link = (DSAGraphVertex)intraILL.next();
+                    DSAGraphVertex link = (DSAGraphVertex)intraILL.next(); /* checking each link to make sure its not connected to vertice to be deleted */
                     if(!(link.getLabel().equals(label)))
                     {
-                        newLinks.insertLast(link);
+                        newLinks.insertLast(link); /* if a vertice isn't the one to be deleted, remove any of its connections to the vertice to be deleted */
                     }
                 }
-                v.links = newLinks;
+                v.links = newLinks; /* including every vertice except the one to be deleted */
                 newVerticeList.insertLast(v);
             }
         }
@@ -173,13 +188,13 @@ public class DSAGraph{
             DSAGraphEdge e = (DSAGraphEdge)ill2.next();
             if(!(e.getFrom().getLabel().equals(label)) && !(e.getTo().getLabel().equals(label)))
             {
-                newEdgeList.insertLast(e);
+                newEdgeList.insertLast(e); /* dont include any edges that include the vertice to be deleted */
             }
         }
         edges = newEdgeList;
     }
 
-
+    /* created for this assignment */
     public void deleteEdge(Object label1, Object label2)
     {
         DSAGraphVertex v1 = getVertex(label1);
@@ -187,11 +202,14 @@ public class DSAGraph{
 
     }
 
+    /* created for this assignment */
     public void updateNode(Object oldLabel, Object newLabel)
     {
         getVertex(oldLabel).setLabel(newLabel);
     }
 
+
+    /* used from my Practical 6 work */
     public void displayAsList()
     {
         Iterator ill = vertices.iterator();
@@ -212,6 +230,7 @@ public class DSAGraph{
         }
     }
 
+    /* used from my Practical 6 work */
     public void displayAsMatrix()
     {
         int tick;
@@ -265,6 +284,8 @@ public class DSAGraph{
         }
     }
 
+
+    /* mostly taken from practical 6 but tweaked a bit to work for this assignment. see below comments */
     public int breadthFirstSearchFind(Object source, Object dest, String pFileName, int option)
     {
 
@@ -296,7 +317,7 @@ public class DSAGraph{
                 }
                 if(w.getLabel().equals(dest))
                 {
-                    return shortestPathBreadth(T, getVertex(dest), getVertex(source), pFileName, option);
+                    return shortestPathBreadth(T, getVertex(dest), getVertex(source), pFileName, option); /* now for this assignment, it returns the shortestPath steps */
                 }
             }
         }
@@ -308,7 +329,7 @@ public class DSAGraph{
         DSALinkedList list = new DSALinkedList();
 
         DSAGraphVertex w = new DSAGraphVertex(null, null);
-        list.insertLast(dest);
+        list.insertLast(dest); /* start from destination and work your way back */
         DSAGraphVertex v = dest;
         do{
             boolean stop = false;
@@ -316,20 +337,15 @@ public class DSAGraph{
             while(ill.hasNext() && !stop)
             {
                 w = (DSAGraphVertex)ill.next();
-                if(isAdjacent(w.getLabel(), v.getLabel()))
+                if(isAdjacent(w.getLabel(), v.getLabel())) /* test that w is connected to v (and not other way round) so that you can account for directional edges */
                 {
                     list.insertFirst(w);
-                    stop = true;
+                    stop = true; /* no need to continue checking for this specific key */
                 }
             }
             v = w;
-        } while(!((v.getLabel()).equals(source.getLabel())));
-        /*if(source == dest)
-        {
-            list = new DSALinkedList();
-            list.insertFirst(dest);
-            list.insertFirst(source);
-        }*/
+        } while(!((v.getLabel()).equals(source.getLabel()))); /* while you have not reached the source */
+
         if(option == 0)
         {
             helpers.saveList(pFileName, list);
@@ -343,9 +359,10 @@ public class DSAGraph{
             helpers.saveList(pFileName, list);
             helpers.printList(list);
         }
-        return list.length() - 1;
+        return list.length() - 1; /* return number of steps / keys crossed taken to complete */
     }
 
+    /* this method repeats the process of finding the optimal path from one key to another, but for the entire string */
     public int breadthStringPath(String string, String pFileName, int option)
     { 
         int count = 0;
@@ -357,6 +374,7 @@ public class DSAGraph{
         return count;
     }
 
+    /* same as breadthFirstSearchFind. mostly from P6 but tweaked slightly */
     public int depthFirstSearchFind(Object source, Object dest, String pFileName, int option)
     {
         DSAQueue T = new DSAQueue();
@@ -368,8 +386,6 @@ public class DSAGraph{
             v.clearVisited();
         }
         DSAGraphVertex v = getVertex(source);
-        //System.out.println(v.getLabel());
-        //System.out.println("\n" + v.getLabel());
         v.setVisited();
         S.push(v);
         T.enqueue(v);
@@ -419,12 +435,6 @@ public class DSAGraph{
             }
             v = w;
         } while(!((v.getLabel()).equals(source.getLabel())));
-        /*if(source == dest)
-        {
-            list = new DSALinkedList();
-            list.insertFirst(dest);
-            list.insertFirst(source);
-        }*/
         if(option == 0)
         {
             helpers.saveList(pFileName, list);
@@ -476,7 +486,6 @@ public class DSAGraph{
             v.clearVisited();
         }
         DSAGraphVertex v = getVertex(source);
-        /*System.out.print(v.getLabel());*/
         v.setVisited();
         Q.enqueue(v);
 
@@ -521,14 +530,14 @@ public class DSAGraph{
                     list.insertFirst(w);
                     if(!numCheck && !capCheck)
                     {
-                        if(w.getLabel().equals("ABC"))
+                        if(w.getLabel().equals("ABC")) /* so if its in the lowercase keyboard and crosses over into the punctuation keyboard */
                         {
                             crossCheck = 3;
                         }
                     }
                     if(!numCheck && capCheck)
                     {
-                        if(w.getLabel().equals("ABC"))
+                        if(w.getLabel().equals("ABC")) /* if its in the uppercase keyboard and crosses over into the puncuation keyboard */
                         {
                             crossCheck = 4;
                         }
@@ -539,22 +548,21 @@ public class DSAGraph{
                         {
                             crossCheck = 5;
                         }
-                        if(w.getLabel().equals("CAPS(-u)")) /* have to address this scenario in case goes from punctuation to upper. therefore needs to pass through lower */
+                        if(w.getLabel().equals("CAPS(-u)")) /* have to address this scenario in case goes from punctuation to upper. therefore needs to pass through lower. therefore passing through 2 keyboards in one path*/
                         {
                             crossCheck = 6;
-                            /*System.out.println("WOAHHHHHHHHH\n\n");*/
                         }
                     }
                     else if(!capCheck)
                     {
-                        if(w.getLabel().equals("CAPS(-u)")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
+                        if(w.getLabel().equals("CAPS(-u)")) /* if its in lowercase and crosses over into uppercase */
                         {
                             crossCheck = 1;
                         }
                     }
                     else if(capCheck)
                     {
-                        if(w.getLabel().equals("CAPS")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
+                        if(w.getLabel().equals("CAPS")) /* if its in uppercase and crosses over into lowercas */
                         {
                             crossCheck = 2;
                         }
@@ -580,8 +588,6 @@ public class DSAGraph{
             v.clearVisited();
         }
         DSAGraphVertex v = getVertex(source);
-        //System.out.println(v.getLabel());
-        //System.out.println("\n" + v.getLabel());
         v.setVisited();
         S.push(v);
         T.enqueue(v);
@@ -610,8 +616,12 @@ public class DSAGraph{
     }
 
 
+
+    /* SEE COMMENTS FOR shortestPathBreadthCAPSCHECK */
     public int shortestPathDepthCAPSCHECK(DSAQueue queue, DSAGraphVertex dest, DSAGraphVertex source, boolean capCheck, boolean numCheck)
     {
+
+        /* SEE COMMENTS FOR shortestPathBreadthCAPSCHECK */
         DSALinkedList list = new DSALinkedList();
         int crossCheck = 0;
         DSAGraphVertex w = new DSAGraphVertex(null, null);
@@ -646,22 +656,21 @@ public class DSAGraph{
                         {
                             crossCheck = 5;
                         }
-                        if(w.getLabel().equals("CAPS(-u)")) /* have to address this scenario in case goes from punctuation to upper. therefore needs to pass through lower */
+                        if(w.getLabel().equals("CAPS(-u)")) 
                         {
                             crossCheck = 6;
-                            /*System.out.println("WOAHHHHHHHHH\n\n");*/
                         }
                     }
                     else if(!capCheck)
                     {
-                        if(w.getLabel().equals("CAPS(-u)")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
+                        if(w.getLabel().equals("CAPS(-u)")) 
                         {
                             crossCheck = 1;
                         }
                     }
                     else if(capCheck)
                     {
-                        if(w.getLabel().equals("CAPS")) /* add boolean check to flip this between either CAPS(-u) or CAPS depening on CAPCHECK atm (which keyboard its on) */
+                        if(w.getLabel().equals("CAPS"))
                         {
                             crossCheck = 2;
                         }
@@ -680,10 +689,11 @@ public class DSAGraph{
         Scanner sc = new Scanner(System.in);
         System.out.println("\nWould you like to keep the uppercase/punctuation suffixes on keys printed/saved. These suffixes help show which keyboard specific keys with duplicates are from. Enter true for yes, or false for no");
         helpers.printSaveCheck = sc.nextBoolean();
-        if(depthStringPath(inputString, pFileName, 4) < breadthStringPath(inputString, pFileName, 4))
+        if(depthStringPath(inputString, pFileName, 4) < breadthStringPath(inputString, pFileName, 4)) /* option 4 is used here so that nothing is double printed / double saved */
         {
-            File f= new File(pFileName);           //file to be delete  
-            f.delete();
+            File f= new File(pFileName); 
+            f.delete(); //file is deleted to be rewritten over
+            /* format for outputting */
             helpers.writeOneRow(pFileName, "Depth wins for " + inputString + " ! \n");
             System.out.println("Depth wins for " + inputString + " ! \n");
             helpers.writeOneRow(pFileName, "Depth path:");
@@ -700,8 +710,9 @@ public class DSAGraph{
         }
         else if(breadthStringPath(inputString, pFileName, 4) < depthStringPath(inputString,pFileName, 4))
         {
-            File f= new File(pFileName);           //file to be delete  
-            f.delete();
+            File f= new File(pFileName); 
+            f.delete(); //file is deleted to be rewritten over
+            /* format for outputting */
             helpers.writeOneRow(pFileName, "Breadth wins for " + inputString + " ! \n");
             System.out.println("Breadth wins for " + inputString + " ! \n");
             helpers.writeOneRow(pFileName, "Breadth path:");
@@ -718,8 +729,9 @@ public class DSAGraph{
         }
         else
         {
-            File f= new File(pFileName);           //file to be delete  
-            f.delete();
+            File f= new File(pFileName);  
+            f.delete(); //file is deleted to be rewritten over
+            /* format for outputting */
             helpers.writeOneRow(pFileName, "TIE for " + inputString + " ! \n");
             System.out.println("Breadth wins for " + inputString + " ! \n");
             helpers.writeOneRow(pFileName, "Breadth path:");

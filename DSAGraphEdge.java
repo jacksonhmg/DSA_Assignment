@@ -1,3 +1,6 @@
+/* TAKEN FROM PRACTICAL 6 WORK */
+
+
 public class DSAGraphEdge {
     private DSAGraphVertex from;
     private DSAGraphVertex to;
@@ -39,8 +42,4 @@ public class DSAGraphEdge {
         return directed;
     }
 
-    /*public String toString()
-    {
-        
-    }*/
 }

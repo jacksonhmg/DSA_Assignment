@@ -10,12 +10,12 @@ public class keyMeUp
     {
         DSAGraph graph = new DSAGraph();
 
-        if(args.length < 0)
+        if(args.length < 1) /* WHEN USER PUTS IN NO INPUT */
         {
             System.out.println("Please enter in the format of 'java keyMeUp -i' for interative or 'java keyMeUp -s keyFile strFile pathFile' for silent mode");
             return;
         }
-        if(args[0].equals("-i"))
+        if(args[0].equals("-i")) /* Interactive menu */
         {
             Scanner sc = new Scanner(System.in);
             String pathString = null;
@@ -26,17 +26,17 @@ public class keyMeUp
             {
                 System.out.println("(1) Load keyboard file");
                 System.out.println("(2) Node and edge operations");
-                System.out.println("(3) Display graph operations");
-                System.out.println("(4) Path operations");
-                System.out.println("(5) Save keyboard to file");
+                System.out.println("(3) Display graph operations"); /* Display graph or display graph info */
+                System.out.println("(4) Path operations"); /* Create string to use for path or use that string to print/save ranked paths for it */
+                System.out.println("(5) Save keyboard to file"); /* saves to a format in same format as pre-written graph files */
                 System.out.println("(6) Exit");
                 int input1 = sc.nextInt();
                 switch(input1)
                 {
-                    
+
                     case 1:
                         System.out.println("Enter filename to read keyboard from:");
-                        sc.nextLine();
+                        sc.nextLine(); /* To consume the null terminator to allow sc.nextLine to work after sc.nextInt */
                         String inputFile = sc.nextLine();
                         helpers.readInGraph(inputFile, graph);
                     break;
@@ -54,11 +54,11 @@ public class keyMeUp
                                 {
                                     case 1:
                                         System.out.println("Enter node label");
-                                        sc.nextLine();
+                                        sc.nextLine(); /* To consume the null terminator to allow sc.nextLine to work after sc.nextInt */
                                         Object vLabel = sc.nextLine();
                                         DSAGraphVertex fVertex = graph.getVertex(vLabel);
                                         Iterator ill = fVertex.getAdjacent().iterator();
-                                        System.out.print(fVertex.getLabel() + ": ");
+                                        System.out.print(fVertex.getLabel() + ": "); /* print format */
                                         while(ill.hasNext())
                                         {
                                             DSAGraphVertex w = (DSAGraphVertex)ill.next();
@@ -97,6 +97,9 @@ public class keyMeUp
 
                                         System.out.println("Enter second vertex label");
                                         Object label2 = sc.nextLine();
+
+
+                                        /* checking all possible outcomes for an edge*/
 
                                         if(graph.hasEdge(label1,label2) && graph.hasEdge(label2, label1))
                                         {
@@ -165,7 +168,7 @@ public class keyMeUp
                             case 1:
                                 System.out.println("Enter string");
                                 sc.nextLine();
-                                pathString = sc.nextLine();
+                                pathString = sc.nextLine(); /* this is saved and stored for later use (see below for use) */
                             break;
                             case 2:
                                 System.out.println("Do you want to (1) Display ranked paths to terminal or (2) Display and save ranked paths to file");
@@ -189,8 +192,8 @@ public class keyMeUp
                         System.out.println("Enter filename to save to");
                         sc.nextLine();
                         String saveFile = sc.nextLine();
-                        File f = new File(saveFile);           //file to be delete  
-                        f.delete();
+                        File f = new File(saveFile); 
+                        f.delete(); /* file is deleted so that its wiped. this is needed because my method that writes to the file only appends, it does not overwrite. so when i need to create a new saved file, i need to wipe the old */
                         Iterator vIll = graph.vertices.iterator();
                         while(vIll.hasNext())
                         {
@@ -203,14 +206,14 @@ public class keyMeUp
                                 DSAGraphVertex y = (DSAGraphVertex)vIll2.next();
                                 if(graph.hasEdge(w.getLabel(), y.getLabel()) && !graph.hasEdge(y.getLabel(), w.getLabel()))
                                 {
-                                    writeString += " -d" + y.getLabel();
+                                    writeString += " -d" + y.getLabel(); /* thw way my file reads in graph, a prefix is needed if an edge is directional. so when i save a keyboard, this is needed */
                                 }
                                 else
                                 {
                                     writeString += " " + y.getLabel();
                                 }
                             }
-                            helpers.writeOneRow(saveFile, writeString);
+                            helpers.writeOneRow(saveFile, writeString); /* appends to file */
                         }
                     break;
 
@@ -225,7 +228,7 @@ public class keyMeUp
             helpers.readInGraph(args[1],graph);
 
             File f= new File(args[args.length - 1]);//file to be deleted
-            f.delete();
+            f.delete(); /* file is deleted so that its wiped. this is needed because my method that writes to the file only appends, it does not overwrite. so when i need to create a new saved file, i need to wipe the old */
             System.out.println();
             graph.displayRankedPaths(helpers.readInString(args), args[args.length - 1], 0);
         }

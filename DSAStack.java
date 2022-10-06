@@ -1,3 +1,6 @@
+/* TAKEN FROM PRACTICAL 6 WORK, ORIGINALLY FROM PRACTICAL 4 */
+
+
 import java.util.*;
 
 public class DSAStack implements Iterable
