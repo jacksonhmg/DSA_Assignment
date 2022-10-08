@@ -1,0 +1,24 @@
+TIE for hi X123 ! 
+
+Breadth path:
+1  -> BACK -> @ -> SPACE -> m -> j -> h
+h  -> y -> u -> i
+i  -> 8 -> SPACE
+SPACE  -> #+= -> CAPS
+CAPS  -> CAPS(-u) -> X
+X  -> Z -> GLOBE(-u) -> 1(-u)
+1(-u)  -> 2(-u)
+2(-u)  -> 3(-u)
+20 steps
+
+Depth path:
+1  -> BACK -> OK -> SPACE -> m -> j -> h
+h  -> j -> k -> i
+i  -> 8 -> SPACE
+SPACE  -> #+= -> CAPS
+CAPS  -> CAPS(-u) -> X
+X  -> CAPS(-u) -> 2(-u) -> 1(-u)
+1(-u)  -> 2(-u)
+2(-u)  -> 3(-u)
+20 steps
+

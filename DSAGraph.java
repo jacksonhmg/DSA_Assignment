@@ -706,7 +706,7 @@ public class DSAGraph{
             x = breadthStringPath(inputString, pFileName, option);
             helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
-            System.out.println("See " + pFileName + " for saved ranked paths");
+            System.out.println("See " + pFileName + " for saved ranked paths\n");
         }
         else if(breadthStringPath(inputString, pFileName, 4) < depthStringPath(inputString,pFileName, 4))
         {
@@ -725,7 +725,7 @@ public class DSAGraph{
             x = depthStringPath(inputString, pFileName, option);
             helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
-            System.out.println("See " + pFileName + " for saved ranked paths");
+            System.out.println("See " + pFileName + " for saved ranked paths\n");
         }
         else
         {
@@ -733,7 +733,7 @@ public class DSAGraph{
             f.delete(); //file is deleted to be rewritten over
             /* format for outputting */
             helpers.writeOneRow(pFileName, "TIE for " + inputString + " ! \n");
-            System.out.println("Breadth wins for " + inputString + " ! \n");
+            System.out.println("TIE for " + inputString + " ! \n");
             helpers.writeOneRow(pFileName, "Breadth path:");
             System.out.println( "Breadth path:");
             int x = breadthStringPath(inputString, pFileName, option);
@@ -744,7 +744,7 @@ public class DSAGraph{
             x = depthStringPath(inputString, pFileName, option);
             helpers.writeOneRow(pFileName, x + " steps\n");
             System.out.println(x + " steps\n");
-            System.out.println("See " + pFileName + " for saved ranked paths");
+            System.out.println("See " + pFileName + " for saved ranked paths\n");
         }
     }
 
