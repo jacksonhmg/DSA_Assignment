@@ -222,11 +222,11 @@ public class keyMeUp
                     break;
                 }
             }
+            sc.close();
         }
         else if(args[0].equals("-s"))
         {
             helpers.readInGraph(args[1],graph);
-
             File f= new File(args[args.length - 1]);//file to be deleted
             f.delete(); /* file is deleted so that its wiped. this is needed because my method that writes to the file only appends, it does not overwrite. so when i need to create a new saved file, i need to wipe the old */
             System.out.println();

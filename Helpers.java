@@ -319,8 +319,10 @@ public class Helpers {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occured");
             e.printStackTrace();
+            System.out.println("Due to this error, the program will terminate");
+            System.exit(0);
         }
     }
 
