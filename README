@@ -1,0 +1,47 @@
+## Synopsis
+Assignment 1 of DSA
+Calculating the most optimal paths to enter strings on given keyboards.
+Multiple keyboards to try. Silent mode (enter a keyboard, a text file and an output file). Interative mode (build, alter and interact with the many keyboards).
+Special features including keyboards that wrap on certain sides, special addition for when to press CAPS or #+= if travelling between a keyboards versions, and more.
+To run the main file:
+Silent mode: 
+    java keyMeUp -s keyFile strFile pathFile
+        e.g. java keyMeUp switch.al inputString.txt outputPath.txt
+Interactive mode:
+    java keyMeUp -i
+
+To run the test harnesses:
+    java TestHarness
+
+##
+
+## Contents
+Data Structures needed:
+    DSAGraphEdge.java
+    DSAGraphVertex.java
+    DSALinkedList.java
+    DSAListNode.java
+    DSAQueue.java
+    DSAStack.java
+DSAGraph.java - Includes all of the necessary functions for a graph as well as all the path calculations for this assignment as well as "displayRankedPath()" which controls how the output of the paths is handled
+Helpers.java - Includes miscellanious functions that are needed for this assignment including printing/saving methods, string fixing and file reading
+keyMeUp.java - The main file that handles the users input and the outcome of that
+Keyboard files: - Each of they keyboards required for this assignment created in my format
+    iview.al
+    netflix.al
+    stan.al
+    switch.al
+    unknownjpg.al
+TestHarness.java - All the test harnesses needed for this assignment
+inputString.txt - Example file given for user to input a string into to use for silent mode
+outputPath.txt - Example file given for user to output the ranked paths to for silent or interactive mode
+
+##
+
+## Dependencies
+DSAGraph depends on DSAGraphEdge, DSAGraphVertex and DSALinkedList
+DSALinkedList depends on DSAListnode
+DSAQueue depends on DSALinkedList
+DSAStack depends on DSALinkedList
+keyMeUp depends on Helpers and DSAGraph
+TestHarness depends on Helpers and DSAGraph
